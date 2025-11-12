@@ -1,0 +1,63 @@
+\documentclass{article}
+
+% Required for inserting images
+\usepackage{graphicx}
+
+% Required for inserting links
+\usepackage{hyperref}
+
+% Required for math equations
+\usepackage{amsmath} 
+\usepackage{stix}
+
+% General data
+\newcommand{\matter}{Matematica Discreta}
+\title{Formulario \matter}
+\author{\href{https://github.com/pietropeerani}{Pietro Peerani}}
+\date{2025}
+
+% Page formatting
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot[L]{Pietro Peerani}
+\fancyfoot[R]{\matter}
+
+ 
+
+\begin{document}
+    
+    \maketitle
+    \newpage
+    \thispagestyle{plain} % remove fancy style from this page
+    \newpage
+
+    \section*{Chapter 2}
+    \begin{itemize}
+        \item angolo di $\varphi$ tra due vettori: $\cos(\varphi) = \frac{<\vec{v}, \vec{w}>}{|\vec{v}|\cdot |\vec{w|}}$
+        \item proiezione ortogonale $\vec{v}'$ di $\vec{v}$ su $\vec{w}$: $\vec{v}' = <v\cdot\frac{\vec{w}}{|\vec{w}|}>\frac{\vec{w}}{|\vec{w}|}$
+        \item la componente ortogonale $\alpha$ di $\vec{v}$ sulla retta parallela e concorde al versore $\vec{w}$: $\vec{v}' = \alpha \frac{w}{|\vec{w}|}$
+        \item versore $\vec{u_1}$ di $\vec{v_1}$: $\vec{u_1} = \frac{\vec{v_1}}{|\vec{v_1}|}$
+        \item vettori paralleli $\Rightarrow$ prodotto scalare uguale a zero ($<\vec{v}, \vec{w}>$ deve risultare zero)
+        \item vettori ortogonali $\Rightarrow$ prodotto vettoriale uguale a zero ($\vec{v}\cdot\vec{w}$ deve risultare zero)
+        \item vettori complanari $\Rightarrow$ prodotto vettoriale uguale a zero ($\vec{v_1}\cdot\vec{v_2}\cdot\dots\cdot\vec{v_n}$ deve risultare zero)
+        \item proiezione ortogonale $\vec{v_1}'$ di $\vec{v_1}$ sul piano contenente $\vec{v_2}$e $\vec{v_3}$: $\vec{v_1}' = \vec{v_1}-\vec{w}$ con $\vec{w} = <\vec{v_1}, \frac{\vec{v_2}\times\vec{v_3}}{|\vec{v_2}\times\vec{v_3}|}>\frac{\vec{v_2}\times\vec{v_3}}{|\vec{v_2}\times\vec{v_3}|}$
+    \end{itemize}
+
+
+
+    \section*{Chapter 3}
+    $W$ è sottospazio di $V$ se:
+
+    (primo metodo)
+    \begin{itemize}
+        \item $\vec{0}\in W$
+        \item chiuso rispetto alla somma
+        \item chiuso rispetto al prodotto tra $\text{vettore}\in W$ e $\alpha\in\mathbb{R}$
+    \end{itemize}
+
+    (secondo metodo)
+    \begin{itemize}
+        \item $\forall w_1, w_2 \in W \text{ e } \forall c\in\mathbb{R}\Rightarrow cw_1-w_2\in W$
+    \end{itemize}
+\end{document}

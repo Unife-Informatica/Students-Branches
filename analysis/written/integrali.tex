@@ -1,0 +1,58 @@
+\section{Integrali}
+\begin{equation}
+    \int_a^bf(x)dx
+\end{equation}
+Restituisce l'area (con segno) delle regione di piano compresa tra il grafico di $f(x)$, l'asse $x$ e le rette verticali $x=a$ e $x=b$.
+Se invece $g(x) = K$ $\forall x\in[a, b]$, allora l'integrale di $g$ sull'intervallo è $\int_a^b g(x)dx = (b-a)\cdot K$.
+
+\subsection{Come calcolarli}
+Per calcolare $\int_a^bf(x)dx$ devo:
+\begin{enumerate}
+    \item trovare una funzione che, nell'intervallo $[a, b]$, abbia $f(x)$ come derivata (primitiva di $f$).
+    \item la calcolo negli estremi della zona di integrazione (calcolo $F(b)$ e $F(a)$).
+    \item sottraggo i due valori: $\int_a^bf(x)dx = F(b)-F(a)$
+\end{enumerate}
+
+\subsection{Primitive}
+Sia $I$ intervallo di $\mathbb{R}$, e sia $f: I\to\mathbb{R}$. Diciamo che: $$F: \mathring{I}\to\mathbb{R}$$
+è primitiva di $f$ se:
+\begin{itemize}
+    \item $F$ è derivabile $\forall x \in \mathring{I}$
+    \item $F'(x)=f(x) \qquad\forall x \in \mathring{I}$
+\end{itemize}
+\[
+\renewcommand{\arraystretch}{1.5} % Aumenta lo spazio verticale tra le righe
+\begin{array}{|c|c|}
+\hline
+\mathbf{f(x)} & \mathbf{F(x)} \\ \hline
+\cos(x) & \sin(x) \\ \hline
+\sin(x) & -\cos(x) \\ \hline
+\tan(x) & -\ln\lvert\cos(x)\lvert \\ \hline
+\arccos(x) & x \arccos(x) - \sqrt{1 - x^2} \\ \hline
+\arcsin(x) & x \arcsin(x) + \sqrt{1 - x^2} \\ \hline
+e^{ax} & \frac{e^{ax}}{a} \\ \hline
+\alpha^x & \frac{\alpha^x}{\ln(\alpha)} \\ \hline
+x^n & \frac{x^{n+1}}{n+1} \quad \forall n \neq -1 \\ \hline
+\frac{1}{x} & \ln(\lvert x \rvert) \\ \hline
+\frac{1}{1+x^2} & \arctan(x) \\ \hline
+\end{array}
+\]
+
+
+\subsection{Proprietà}
+\begin{equation}
+    \int[f(x)\pm g(x)]dx = \int f(x)dx \pm \int g(x)dx
+\end{equation}
+\begin{equation}
+    \int Kf(x)dx = K\int f(x)dx
+\end{equation}
+\begin{equation}
+    \int_a^bf(x)dx = \int_a^cf(x)dx  + \int_c^bf(x)dx
+\end{equation}
+
+
+\subsection{Metodi}
+\subsubsection{Integrazione per parti}
+\begin{equation}
+    \int f(x)g'(x) = f(x)g(x) - \int f'(x)g(x)dx
+\end{equation}

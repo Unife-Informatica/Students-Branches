@@ -1,0 +1,135 @@
+\documentclass{article}
+
+% Required for inserting images
+\usepackage{graphicx}
+
+% Required for inserting links
+\usepackage{hyperref}
+
+% Required for math equations
+\usepackage{amsmath}  
+\usepackage{stix}
+
+% General data
+\title{Formulario Analisi 1}
+\author{\href{https://github.com/pietropeerani}{Pietro Peerani}}
+\date{2024}
+
+% Page formatting
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot[L]{Pietro Peerani}
+\fancyfoot[R]{Analisi 1}
+
+
+
+\begin{document}
+    
+    \maketitle
+    \newpage
+    \thispagestyle{plain} % remove fancy style from this page
+    \tableofcontents
+    \newpage
+    
+    \section{Forme utili}
+    \subsection{Bernoulli (Jacob)}
+    \begin{equation}
+        (1+x)^n > 1+nx
+    \end{equation}
+    
+    \subsection{Numero di Nepero}
+    \begin{equation}
+        \lim_{n\rightarrow\infty}\biggl(1+\frac{1}{n}\biggl)^n
+    \end{equation}
+    \begin{equation}
+        \lim_{n\rightarrow\infty}\biggl(1-\frac{1}{n}\biggl)^{-n}
+    \end{equation}
+    
+
+    \input{limiti_di_successioni}
+
+    \input{funzioni}
+
+    \section{Teorema delle restrizioni}
+    Sia $f:A\to\mathbb{R}$ e sia $x_0$ punto di accumulazione per $A$. Sia inoltre $A_0 \subseteq A$ e supponiamo che $x_0$ sia punto di accumulazione anche per $A_0$.
+    
+    Se $\exists \lim_{x_{\in A}\to x_0}f(x)$, allora:
+    \begin{equation}
+        \exists \lim_{x_{x\in A_0}\to x_0} f(x) = \lim_{x_{x\in A}\to x_0} f(x)
+    \end{equation}
+
+    \subsection{Osservazione}
+    Se $f:A\rightarrow\mathbb{R}$ con $x_0$ punto di accumulazione per $A$, se trovo:
+    \begin{equation}
+        \begin{cases}
+            A_1 \in A\\ 
+            \text{$x_0$ punto di accumulazione per $A_1$}
+        \end{cases}
+        \qquad
+        \text{e}
+        \qquad
+        \begin{cases}
+            A_2 \in A\\ 
+            \text{$x_0$ punto di accumulazione per $A_2$}
+        \end{cases}
+    \end{equation}
+    tale che:
+    \begin{equation}
+        \lim_{x_{x\in A_1}\to x_0} f(x) \not = \lim_{x_{x\in A_2}\to x_0} f(x) \Longrightarrow \not\exists \lim_{x_{x\in A}\to x_0} f(x)
+    \end{equation}
+
+
+    \section{Limiti "assolutamente notevoli"}
+    \begin{equation}
+        \lim_{x\to 0} \frac{sin(x)}{x} = 1
+    \end{equation}
+    \begin{equation}
+        \lim_{x\to 0} \frac{1- cos(x)}{x^2} = \frac{1}{2}
+    \end{equation}
+    \begin{equation}
+        \lim_{x\to 0} \frac{e^x - 1}{x} = 1
+    \end{equation}
+    \begin{equation}
+        \lim_{x\to 0} \frac{log(x+1)}{x} = 1
+    \end{equation}
+
+    \section{Teorema del cambaimento di variabile}
+    Siano $A, B \subseteq \mathbb{R}$ e sia $h:A\to B$ e $g:B\to\mathbb{R}$. Supponiamo $x_0$ punto di accumulazione per $A$ e che:
+    \begin{equation}
+        \exists\lim_{x\to x_0} h(x) = l \qquad (l\in\mathbb{R} \text{ o } \pm\infty)
+    \end{equation}
+    Supponiamo che che $l$ sia di accumulazione per $B$ e che:
+    \begin{equation}
+        \exists\lim_{y\to l}g(y) = m
+    \end{equation}
+    Allora, se vale uno dei seguenti due casi:
+    \begin{itemize}
+        \item $l\not\in B$
+        \item $l\in B \text{ e } g(l) = m$
+    \end{itemize}
+    risulta che:
+    \begin{equation}
+        \exists\lim_{n\to x_0} g(h(x)) = m
+    \end{equation}
+
+
+    % ***************************************
+    % SECONDO PARZIALE
+    % ***************************************
+
+    \section{Formule trigonometriche}
+    \begin{equation}
+        sin(2a) = 2sin(x)cos(x)
+    \end{equation}
+    \begin{equation}
+        tan(2a) = \frac{2tan(a)}{1-tan^2(a)}
+    \end{equation}
+
+    \input{derivate}
+    
+    \input{studio_funzione}
+    
+    \input{integrali}
+
+\end{document}

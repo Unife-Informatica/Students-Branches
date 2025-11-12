@@ -1,0 +1,243 @@
+\documentclass[a4paper,8pt]{extarticle}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,mathtools}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage[compact]{titlesec}
+
+\geometry{top=1in, headheight=0.5in, headsep=0.1in, margin=0.5in}
+\setlist{nosep}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\renewcommand{\baselinestretch}{0.8}
+
+\definecolor{lightblue}{rgb}{0.75,0.85,1}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{Formulario Fisica 1 - Pietro Peerani}
+
+\newcommand{\mybox}[2]{
+    \begin{tcolorbox}[colback=lightblue!5!white,colframe=lightblue!75!black,boxsep=1pt,arc=0pt,outer arc=0pt,title={\textcolor{black}{#1}}]
+        \textcolor{black}{#2}
+    \end{tcolorbox}
+}
+
+\begin{document}
+\fontsize{7pt}{8pt}\selectfont
+\begin{multicols}{2}
+
+\mybox{Velocità}{
+    \begin{subequations}
+    \begin{align}
+    v_{x,\text{media}} &= \frac{\Delta x}{\Delta t} \\
+    v_{x} &= \lim_{\Delta t \to 0} \frac{\Delta x}{\Delta t} = \frac{dx}{dt}
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Accelerazione}{
+    \begin{equation}
+    a_{x} = \frac{\Delta v}{\Delta t}
+    \end{equation}
+}
+
+\mybox{Moto Rettilineo Uniforme}{
+    \begin{equation}
+    x_{f} = x_{i} + vt
+    \end{equation}
+}
+
+\mybox{Moto Uniformemente Accelerato}{
+    \begin{subequations}
+    \begin{align}
+    v_{x_{f}} &= v_{x_{i}} + a_{x}t \\
+    x_{f} &= x_{i} + v_{x_{i}}t + \frac{1}{2}a_{x}t^2 \\
+    v_{f}^2 &= v_{i}^2 + 2a(x_{f} - x_{i})
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Moto Verticale}{
+    \begin{subequations}
+    \begin{align}
+    t_{c} &= \sqrt{\frac{2h}{g}} \\
+    v_{c} &= \sqrt{2gh}
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Moto Armonico Semplice}{
+    \begin{subequations}
+    \begin{align}
+    x(t) &= A\sin(\omega t + \phi) \\
+    v(t) &= \omega A\cos(\omega t+\phi) \\
+    a(t) &= -\omega^2 A\sin(\omega t+\phi)
+    \end{align}
+    \end{subequations}
+    \begin{subequations}
+    \begin{align}
+    T &= \frac{2\pi}{\omega} \\
+    f &= \frac{1}{T} = \frac{\omega}{2\pi} \\
+    \omega &= \frac{v_{t}}{r}
+    \end{align}
+    \end{subequations}
+    \begin{equation}
+    v_{max} = A\omega
+    \end{equation}
+}
+
+\mybox{Moto Parabolico}{
+    \begin{subequations}
+    \begin{align}
+    h &= \frac{v_{i}^2 \sin^2 \theta_i}{2g} \\
+    R &= \frac{v_{i}^2 \sin(2\theta_i)}{g} \\
+    y_f &= \tan \theta_i \cdot x_f - \frac{g}{2v_i^2 \cos^2 \theta_i} x_f^2
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Moto Circolare Uniforme}{
+    \begin{subequations}
+    \begin{align}
+    a_{c} &= \frac{v_{t}^2}{r} = \omega^2 r \\
+    v &= \frac{2\pi r}{T} = \omega r \\
+    \omega &= \frac{v}{r}
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Coordinate Moto Circolare}{
+    \begin{subequations}
+    \begin{align}
+    \theta(t) &= \theta_0 + \omega t \\
+    x(t) &= R\cos(\theta(t)) \\
+    y(t) &= R\sin(\theta(t))
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Moto Curvilineo}{
+    \begin{subequations}
+    \begin{align}
+    \vec{a} &= \vec{a}_{radiale} + \vec{a}_{tangenziale} \\
+    a_{r} &= \frac{v^2}{r} = \omega^2 R \\
+    a_{t} &= \dv{|\vec{v}|}{t} \\
+    a &= \sqrt{a_{r}^2 + a_{t}^2}
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Seconda Legge di Newton}{
+    \begin{equation}
+    \sum \vec{F} = m\vec{a}
+    \end{equation}
+    \textbf{Unità:} $N = \frac{kg \cdot m}{s^2}$
+}
+
+\mybox{Forze di Attrito}{
+    \begin{subequations}
+    \begin{align}
+    f_s &\leq \mu_s n \\
+    u_d &< u_s
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Piano Inclinato}{
+    \begin{equation}
+    \sin(\theta) - \mu_d \cos(\theta) \geq 0 \quad \Rightarrow \quad \tan(\theta) \geq \mu_d
+    \end{equation}
+}
+
+\mybox{Forza Elastico}{
+    \begin{subequations}
+    \begin{align}
+    \vec{F} &= -k x \hat{i} \\
+    a &= -\frac{k}{m}x = -\omega^2 x \\
+    \omega &= \sqrt{\frac{k}{m}}
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Lavoro}{
+    \begin{subequations}
+    \begin{align}
+    W &= \vec{F} \cdot \vec{s} = F s \cos \theta = F_T s \\
+    W &= \int_A^B F_T ds
+    \end{align}
+    \end{subequations}
+    \textbf{Unità:} $J = [N \cdot m] = [kg\cdot m^2\cdot s^{-2}]$
+}
+
+\mybox{Tipi di Lavoro}{
+    \begin{itemize}
+        \item Motore: $0 \leq \theta < \frac{\pi}{2}$
+        \item Resistente: $\theta > \frac{\pi}{2}$
+        \item Nullo: $\theta = \frac{\pi}{2}$
+    \end{itemize}
+}
+
+\mybox{Potenza}{
+    \begin{subequations}
+    \begin{align}
+    P_{media} &= \frac{W}{\Delta t} \\
+    P_{istantanea} &= F_T v
+    \end{align}
+    \end{subequations}
+    \textbf{Unità:} $W = [J/s] = [kg \cdot m^2 \cdot s^{-3}]$
+}
+
+\mybox{Energia Cinetica}{
+    \begin{equation}
+    E_k = \frac{1}{2} m v^2
+    \end{equation}
+}
+
+\mybox{Teorema Energia Cinetica}{
+    \begin{equation}
+    W = \Delta E_k = E_{k,f} - E_{k,i}
+    \end{equation}
+}
+
+\mybox{Lavoro Forze}{
+    \begin{subequations}
+    \begin{align}
+    W_{\text{peso}} &= -(mg y_B - mg y_A) \\
+    W_{\text{elastica}} &= -\left( \frac{1}{2}k x_B^2 - \frac{1}{2}k x_A^2 \right) \\
+    W_{\text{attrito}} &= -\mu_d N s_{AB}
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Energia Potenziale}{
+    \begin{subequations}
+    \begin{align}
+    E_{p,\text{molla}} &= \frac{1}{2}k x^2 \\
+    E_{p,\text{peso}} &= mgy
+    \end{align}
+    \end{subequations}
+}
+
+\mybox{Energia Meccanica}{
+    \begin{equation}
+    E_m = E_K + E_P = \text{costante}
+    \end{equation}
+    Con attrito:
+    \begin{equation}
+    E_{m,B} = E_{m,A} - |W_{\text{attrito}}|
+    \end{equation}
+}
+
+\end{multicols}
+\end{document}

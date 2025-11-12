@@ -1,0 +1,38 @@
+\section{Limiti di successioni}
+\subsection{Rapporto tra polinomi}
+\begin{equation}
+    a_n = \frac{P_1(x)}{P_2(x)} \Longrightarrow \exists\lim_{n\rightarrow\infty} a_n = 
+    \begin{cases}
+        0 & se\ g_2 > g_1\\
+        \frac{c_1}{c_2} & se\ g_2 = g_1\\
+        \pm\infty & se\ g_2 < g_1
+    \end{cases}
+\end{equation}
+
+\subsection{Teorema (delle sottosuccessioni)}
+Supponiamo di avere $\{a_n\}$ tale che $\exists\lim_{n\rightarrow\infty}a_n$ (finito o infinito), allora per ogni sottosuccessione $\{a_{n_k}\}$ di $\{a_n\}$ si ha $\lim_{n\rightarrow\infty}a_{n_k} = \lim_{n\rightarrow\infty}a_n$
+
+\subsubsection{Sottosuccessioni}
+Se esistono 2 sottosuccessioni $\{a_{n_{k_n^1}}\}$ e $\{a_{n_{k_n^2}}\}$ tale che $\lim_{n\rightarrow\infty}a_{n_{k_n^1}} \not = \lim_{n\rightarrow\infty}a_{n_{k_n^2}}$. Allora (per il teorema precedente):
+\begin{equation}
+    \not\exists\lim_{n\rightarrow\infty}a_n
+\end{equation}
+
+\subsection{Criterio del rapporto}
+Sia $\{a_n\} > 0$ tale che:
+\begin{equation}
+    \exists\lim_{n\rightarrow\infty}\frac{a_{n+1}}{a_n} = L
+\end{equation}
+Allora:
+\begin{equation}
+    \exists\lim_{n\rightarrow\infty} a_n = 
+    \begin{cases}
+        L \in [0, 1) & \rightarrow \exists\lim_{n\rightarrow\infty} a_n = 0 \\ 
+        L \in (1, +\infty] & \rightarrow \exists\lim_{n\rightarrow\infty} a_n = +\infty
+    \end{cases}
+\end{equation}
+
+\subsubsection{Ordini di infinito}
+\begin{equation}
+    n^n \ggg n! \ggg q^n (\forall q>1) \ggg n^\alpha (\forall\alpha > 0) \ggg \log_\alpha n (\forall\alpha>1)
+\end{equation}

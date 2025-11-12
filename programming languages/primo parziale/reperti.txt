@@ -1,0 +1,27 @@
+1 geologico
+Blocco di Cornubianite
+1956 AA4523
+100.9
+Malgola
+204
+
+2 biologico
+Fossile di pterodattilo
+1856 CD3233
+S 45
+Pterodactylus antiquus
+Solnhofen
+
+3 geologico
+Agata
+1965 AB3222
+34.6
+Val San Nicola
+12
+
+4 biologico
+Ossa di mammuth
+1923 CE3223
+N 27
+Mammuthus africanavus
+Kenya

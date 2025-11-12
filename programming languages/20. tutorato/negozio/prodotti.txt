@@ -1,0 +1,4 @@
+1 penne 0.5
+2 matite 4
+3 libro 8
+4 giornale 1

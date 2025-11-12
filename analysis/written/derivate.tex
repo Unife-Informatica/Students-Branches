@@ -1,0 +1,89 @@
+\section{Derivate}
+Sia $f: A\to\mathbb{R}$, e sia $x_0$ punto interno ad A. Diciamo che $f$ è derivabile in $x_0$ se:
+\begin{equation}
+    \exists\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0} = l \in\mathbb{R}
+\end{equation}
+
+% \subsection{Derivata di una retta}
+% Sia $l:\mathbb{R}\to\mathbb{R}$ con $l(x) = mx+q$, pertanto:
+% \begin{equation}
+%     g(x)=\frac{l(x)-l(x_0)}{x-x_0} = \frac{(mx+q) - (mx_0+q)}{x-x_0} = m
+% \end{equation}
+% Allora:
+% \begin{equation}
+%     \exists\lim_{x\to x_0} g(x) = m
+% \end{equation}
+% In particolare \textbf{le funzioni costanti hanno derivata nulla}.
+
+\subsection{Retta tangente}
+\begin{equation}
+    y = f'(x_0)(x-x_0) + f(x_0)
+\end{equation}
+
+\subsection{Regole di derivazione}
+\begin{equation}
+    (f+g)'(x_0) = f'(x_0) + g'(x_0)
+\end{equation}
+\begin{equation}
+    (f\cdot g)'(x_0) = f'(x_0) g(x_0) + f(x_0)g'(x_0)
+\end{equation}
+\begin{equation}
+    \bigg(\frac{f}{g}\bigg)'(x_0) = \frac{f'(x_0) g(x_0) - f(x_0)g'(x_0)}{g^2(x_0)} \qquad \bigg(\frac{1}{g}\bigg)'(x_0) = \frac{-g'(x_0)}{g^2(x_0)}\end{equation}
+\begin{equation}
+    (g\ o\ f)'(x_0) = g'(f(x_0))\cdot f'(x_0)
+\end{equation}
+\begin{equation}
+    (f^{-1})'(y_0) = \frac{1}{f'(x_0)}
+\end{equation}
+
+\subsection{Derivate notevoli}
+Calcolo le derivate della funzione $f$ in $x_0$ con:
+\begin{equation}
+    f'(x_0) = \lim_{t \to 0}\frac{f(x_0 + t)- f(x_0)}{t}
+\end{equation}
+Allora:
+\begin{equation}
+    f(x) = x^n \qquad f'(x) = nx^{n-1}
+\end{equation}
+\begin{equation}
+    f(x) = x^{-n} = \frac{1}{x^n} \qquad f'(x) = -nx^{-n-1} = \frac{-n}{x^{n+1}}
+\end{equation}
+\begin{equation}
+    f(x) = e^x \qquad f'(x) = e^x
+\end{equation}
+\begin{equation}
+    f(x) = e^{-x} \qquad f'(x) = -e^{-x}
+\end{equation}
+\begin{equation}
+    f(x) = a^x \qquad f'(x) = log(a) \cdot a^x
+\end{equation}
+\begin{equation}
+    f(x) = log(x) \qquad f'(x) = \frac{1}{x}
+\end{equation}
+\begin{equation}
+    f(x) = x^\alpha \qquad f'(x) = \alpha x^{\alpha - 1} 
+\end{equation}
+\begin{equation}
+    f(x) = \sqrt{x} = x^\frac{1}{2} \qquad f'(x) = \frac{1}{2\sqrt{x}}
+\end{equation}
+\begin{equation}
+    f(x) = sin(x) \qquad f'(x) = cos(x)
+\end{equation}
+\begin{equation}
+    f(x) = cos(x) \qquad f'(x) = -sin(x)
+\end{equation}
+\begin{equation}
+    f(x) = tan(x) = \frac{sin(x)}{cos(x)} \qquad f'(x) = 1 + tan^2(x)
+\end{equation}
+\begin{equation}
+    f(x) = arcsin(x) \qquad f'(x) = \frac{1}{\sqrt{1-x^2}}
+\end{equation}
+\begin{equation}
+    f(x) = arcos(x) \qquad f'(x) = \frac{-1}{\sqrt{1-x^2}}
+\end{equation}
+\begin{equation}
+    f(x) = arctan(x) \qquad f'(x) = \frac{1}{1+x^2}
+\end{equation}
+
+Nel caso la $x$ si presentasse sia alla base che all'esponente (es. $f(x) = x^x$, $f(x) = (sin(x))^{cos(x)}$) potremmo riscrivere la funzione come:  $f(x) = e^{log(x^x)} = e^{xlog(x)}$.
+Sviluppando la derivata avremmo allora: $f'(x) = e^{xlog(x)}\cdot \Big[log(x) + x\cdot\frac{1}{x}\Big] = e^{xlog(x)}\cdot [log(x) + 1]$. Ma essendo $x^x = e^{log(x^x)}$ possiamo riscrivere il risultato come: $f'(x) = x^x \cdot [log(x)+1]$.

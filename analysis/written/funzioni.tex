@@ -1,0 +1,121 @@
+\section{Funzioni}
+\subsection{Domini di funzioni elementari}
+\begin{itemize}
+    \item $f(x) = \sqrt{x} : x \ge 0$
+    \item $f(x) = \log{x} : x > 0$
+    \item $f(x) = \frac{1}{x} : x \not = 0$
+    \item $f(x) = P(x)^\alpha : x \ge 0$ se $\alpha$ numero illimitato NON periodico.
+\end{itemize}
+
+\subsection{Funzioni trigonometriche e iperboliche}
+\begin{itemize}
+    \item $sin(x)$ e $cos(x)$: $\mathbb{R}$
+    \begin{itemize}
+        \item $sin^2(x) + cos^2(x) = 1$
+        \item $cos(\alpha + \beta) = cos(\alpha)\cdot cos(\beta) + sin(\beta)\cdot sin(\alpha)$
+        \item $sin(\alpha + \beta) = sin(\alpha)\cdot cos(\beta) + sin(\beta)\cdot cos(\alpha)$
+    \end{itemize}
+    \item $tan(x) : \mathbb{R} \backslash \big\{\frac{\pi}{2} + k\pi\big\}$
+    \item $arctan(x) : \mathbb{R}$
+    \item $sinh(x)$ e $cosh(x)$: $\mathbb{R}$
+    \begin{itemize}
+        \item $cosh^2(x) - sinh^2(x) = 1$
+        \item $cosh(x) = \frac{(e^x + e^{-x})}{2}$
+        \item $sinh(x) = \frac{(e^x - e^{-x})}{2}$
+        \item $cosh(\alpha + \beta) = cosh(\alpha)\cdot cosh(\beta) + sinh(\alpha)\cdot sinh(\beta)$
+        \item $sinh(\alpha + \beta) = sinh(\alpha)\cdot cosh(\beta) + cosh(\alpha)\cdot sinh(\beta)$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Limiti di funzioni}
+\subsubsection{\texorpdfstring{$f$ converge in $l \in \mathbb{R}$}{}}
+Sia $f:A\rightarrow\mathbb{R}$ punto di accumulazione per $A$, allora:
+
+\begin{itemize}
+    \item $x_0\in\mathbb{R}$:
+    \begin{equation}
+        \begin{aligned}
+            & \exists \lim_{x \to x_0} f(x) = l \quad \text{se:} \\
+            & \forall \varepsilon > 0 \qquad \exists \delta > 0 : |f(x) - l| < \varepsilon \qquad \forall x \in A \ \text{con} \ 0 < |x - x_0| < \delta
+        \end{aligned}
+    \end{equation}
+    
+    \item $x_0 = \pm\infty$:
+    \begin{equation}
+        \begin{aligned}
+            & \exists \lim_{x \to \pm\infty} f(x) = l \quad \text{se:} \\
+            & \forall \varepsilon > 0 \qquad \exists N > 0 : |f(x) - l| < \varepsilon \qquad \forall x \in A \ \text{con} 
+            \begin{cases}
+                x > N &(+\infty)\\ 
+                x < -N\quad&(-\infty)
+            \end{cases}
+        \end{aligned}
+    \end{equation}
+\end{itemize}
+
+\subsubsection{\texorpdfstring{$f$ diverge a $\pm\infty$}{}}
+Sia $f:A\to\mathbb{R}$ e $x_0$ punto di accumulazione per A, allora:
+\begin{itemize}
+    \item $x_0\in\mathbb{R}$:
+    \begin{equation}
+        \begin{aligned}
+            & \exists \lim_{x \to x_0} f(x) = \pm\infty \quad \text{se:} \\
+            & \forall M > 0 \quad \exists\delta>0:
+            \begin{cases}
+                f(x)>M &(+\infty)\\ 
+                f(x) < -M\ &(-\infty)
+            \end{cases} \qquad
+            \forall x\in A\ \text{con}\ 0 < |x-x_0| < \delta
+        \end{aligned}
+    \end{equation}
+    
+    \item $x_0 = \pm\infty$:
+    \begin{equation}
+        \begin{aligned}
+            & \exists \lim_{x \to \pm\infty} f(x) = \pm\infty \quad \text{se:} \\
+            & \forall M > 0 \quad \exists N>0:
+            \begin{cases}
+                f(x)>M &(+\infty)\\ 
+                f(x) < -M\ &(-\infty)
+            \end{cases} \qquad
+            \forall x\in A\ \text{con}
+            \begin{cases}
+                x>N &(+\infty)\\ 
+                x<-N\ &(-\infty)
+            \end{cases}
+        \end{aligned}
+    \end{equation}
+\end{itemize}
+
+\subsection{Funzioni SU, 1-1, biettive}
+Sia $f:A\to B$ una funzione.
+\begin{itemize}
+    \item $f$ si dice \textbf{suriettiva} se:
+    \begin{equation}
+        f(A) = B
+    \end{equation}
+    cioè $\forall x\in B \quad \exists x\in A : y = f(x)$. In tal caso scriveremo $f:A\xrightarrow{SU} B$
+
+    \item $f$ si dice \textbf{iniettiva} se:
+    \begin{equation}
+        f(x) = f(x') \Longrightarrow x = x' \qquad \forall x, x' \in A
+    \end{equation}
+    cioè $\forall x, x' \in A$ con $x \not = x'$ si ha $f(x) \not = f(x')$. In tal caso scriviamo $f:A\xrightarrow{1-1}B$
+
+    \item $f$ si dice \textbf{biettiva/biunivoca} se $f$ è sia suriettiva sia iniettiva. In tal caso scriviamo $f:A\xrightarrow{SU, 1-1}B$
+\end{itemize}
+
+\subsection{Funzioni continue}
+Sia $f:A\to\mathbb{R}$ supponiamo $x_0\in A$ e $x_0$ punto di accumulazione per $A$.
+La funzione si dice continua in $x_0$ se:
+\begin{equation}
+    \exists\lim_{x_{x\in A}\to x_0}f(x) = f(x_0)
+\end{equation}
+\subsubsection{Teorema di Bolzano (o "Teorema degli zeri")}
+Sia una funzione $f:A\to\mathbb{R}$, e sia $[a,b]\subseteq A$ un \textbf{intervallo chiuso e limitato}. Supponiamo inoltre che $f \in C([a, b])$, e che assuma agli estremi dell'intervallo valori di segno opposto, cioè: $f(a)\cdot f(b) < 0$.
+Allora $f$ ammette almeno uno zero interno ad $[a, b]$, cioè $\exists f(x_0) = 0$.
+\subsubsection{Corollario (o "Teorema dei valori interni")}
+Sia $I$ intervallo di $\mathbb{R}$, e sia $f:I\to\mathbb{R}$ continua. Il teorema dice che se prendi due punti ($f(x_1)$ e $f(x_2)$) prendo tutti i valori di $y$ che stanno in mezzo tra $f(x_1)$ e $f(x_2)$.
+\subsubsection{Teorema di Weierstrass}
+Siano $a<b$. Sia $f:[a, b] \to \mathbb{R}$
+Supponiamo $f$ continua. Allora Esistono il minimo ed il massimo assoluti per $f$ su $[a, b]$, cioè esistono $x_{min} \text{ e } x_{max} \in [a, b]$.
