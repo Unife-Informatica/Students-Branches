@@ -1,0 +1,204 @@
+\documentclass[a4paper,12pt]{article}
+
+% Pacchetti
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\geometry{margin=1in}
+
+% Configurazione codice
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue}\bfseries,
+    stringstyle=\color{red},
+    commentstyle=\color{gray},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    tabsize=4,
+    breaklines=true,
+    showstringspaces=false,
+    frame=single,
+    captionpos=b
+}
+
+% Intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhead[L]{Programmazione in C}
+\fancyhead[R]{\thepage}
+\fancyfoot[L]{Esempi pratici}
+\fancyfoot[R]{\today}
+
+% Titoli personalizzati
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Titolo
+\title{\textbf{Esempi di Programmazione in C}}
+\author{Studente di Informatica}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduzione}
+Questo documento presenta esempi pratici di programmazione in C, focalizzandosi su tre argomenti principali:
+\begin{itemize}
+    \item Funzioni avanzate della libreria \texttt{string.h}.
+    \item Operazioni avanzate sui file.
+    \item Generazione di numeri casuali.
+\end{itemize}
+
+Ogni sezione contiene esempi di codice dettagliati e spiegazioni, utili per studenti e sviluppatori.
+
+\section{Funzioni della Libreria \texttt{string.h}}
+La libreria \texttt{string.h} include molte funzioni utili per la manipolazione delle stringhe.
+
+\subsection{Funzioni Base}
+Ecco alcune delle funzioni più utilizzate:
+\begin{itemize}
+    \item \texttt{strcat}: Concatena due stringhe.
+    \item \texttt{strcmp}: Confronta due stringhe.
+    \item \texttt{strlen}: Calcola la lunghezza di una stringa.
+    \item \texttt{strcpy}: Copia una stringa in un'altra.
+\end{itemize}
+
+\subsection{Funzioni Avanzate}
+Esempio di utilizzo di funzioni come \texttt{strstr}, \texttt{strchr} e \texttt{strcasecmp}:
+\begin{lstlisting}[caption={Esempio di utilizzo avanzato di \texttt{string.h}}]
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char testo[] = "C programming is fun!";
+    char parola[] = "programming";
+
+    // Cercare una sottostringa
+    char *sottostringa = strstr(testo, parola);
+    if (sottostringa) {
+        printf("Trovata la sottostringa: %s\n", sottostringa);
+    }
+
+    // Cercare un carattere
+    char *carattere = strchr(testo, 'f');
+    if (carattere) {
+        printf("Trovato il carattere 'f' alla posizione: %ld\n", carattere - testo);
+    }
+
+    // Confrontare stringhe ignorando maiuscole/minuscole
+    if (strcasecmp("HELLO", "hello") == 0) {
+        printf("Le stringhe sono uguali (case insensitive).\n");
+    }
+
+    return 0;
+}
+\end{lstlisting}
+
+\section{Operazioni Avanzate sui File}
+In C, i file vengono gestiti tramite la libreria \texttt{stdio.h}. Ecco alcune operazioni avanzate:
+
+\subsection{Appendere Dati a un File}
+\begin{lstlisting}[caption={Appendere dati a un file}]
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("output.txt", "a");
+    if (fp == NULL) {
+        perror("Errore apertura file");
+        return 1;
+    }
+
+    fprintf(fp, "Aggiungo una nuova riga al file.\n");
+    fclose(fp);
+    printf("Dati aggiunti al file.\n");
+
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Contare le Linee in un File}
+\begin{lstlisting}[caption={Contare le linee in un file}]
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("output.txt", "r");
+    if (fp == NULL) {
+        perror("Errore apertura file");
+        return 1;
+    }
+
+    int linee = 0;
+    char buffer[100];
+    while (fgets(buffer, 100, fp) != NULL) {
+        linee++;
+    }
+    fclose(fp);
+
+    printf("Il file contiene %d linee.\n", linee);
+    return 0;
+}
+\end{lstlisting}
+
+\section{Generazione di Numeri Casuali}
+La generazione di numeri casuali in C è gestita tramite la libreria \texttt{stdlib.h}.
+
+\subsection{Esempio di Numeri Casuali}
+\begin{lstlisting}[caption={Generazione di numeri casuali tra 1 e 100}]
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    srand(time(NULL)); // Inizializza il generatore
+
+    // Genera 5 numeri casuali tra 1 e 100
+    for (int i = 0; i < 5; i++) {
+        int numero = (rand() % 100) + 1;
+        printf("Numero casuale: %d\n", numero);
+    }
+
+    return 0;
+}
+\end{lstlisting}
+
+\section{Esempio Combinato}
+Un esempio complesso che combina stringhe, file e numeri casuali:
+\begin{lstlisting}[caption={Esempio combinato con stringhe, file e random}]
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+int main() {
+    FILE *fp = fopen("random_data.txt", "w");
+    if (fp == NULL) {
+        perror("Errore apertura file");
+        return 1;
+    }
+
+    srand(time(NULL));
+    for (int i = 0; i < 5; i++) {
+        char nome[20];
+        sprintf(nome, "Nome%d", i + 1);
+
+        int numero = (rand() % 100) + 1;
+
+        fprintf(fp, "%s - Numero: %d\n", nome, numero);
+    }
+    fclose(fp);
+
+    printf("Dati scritti nel file.\n");
+    return 0;
+}
+\end{lstlisting}
+
+\end{document}

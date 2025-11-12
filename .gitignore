@@ -1,0 +1,23 @@
+# latex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# programming
+.vscode
+*.out
+*.o
+*.gch
+prog
+
+# programming languages
+*.class
+
+# System files
+.DS_Store
+.DS_Store:Zone.Identifier
+Thumbs.db
