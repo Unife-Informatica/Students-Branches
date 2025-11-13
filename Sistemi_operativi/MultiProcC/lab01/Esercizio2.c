@@ -6,11 +6,11 @@
 #include <sys/wait.h>
 
 int main(int argc, char *argv[]){
-  int pid, fd, status, i;
+  int pid, fd, status;
 
   //Controllo il numero degli argomenti
   if(argc < 3){
-    fprintf(stderr, "Uso: ./cerca <nomeFile> <stringa1> ... <stringaN> \n");
+    fprintf(stderr, "Uso: ./cerca <nomeFile> <stringa1> ... <stringaN>\n");
     exit(1);
   }
 
@@ -20,13 +20,14 @@ int main(int argc, char *argv[]){
     perror("Errore nella creazione del file di conteggio, terminato\n");
     exit(2);
   }
-  // Chiudo il filen 
+
+  // Chiudo il file
   close(fd);
 
-  for(i = 2; i < argc; i++){
+  for(int i = 2; i < argc; i++){
     pid = fork();
     if(pid < 0){
-      //Errore
+      // Errore
       perror("fork");
       exit(3);
     }else if(pid == 0){
@@ -47,19 +48,19 @@ int main(int argc, char *argv[]){
 
       printf("\nNum di righe in cui compare la stringa %s:\n", argv[i]);
       // Chiamata a: grep -c stringa nomeFile
-      execlp("grep","grep","-c", argv[i], argv[1], (char *)0);
+      execlp("grep", "grep", "-c", argv[i], argv[1], (char *)0);
 
       perror("exec");
       exit(4);
+    } // Fine for
+
+    // Se arrivo qui, sono sicuramente il padre
+    for(int i = 2; i < argc; i++){
+      // Padre - Attendo la terminazione di uno dei figli
+      wait(&status);
     }
-  }// Fine for
 
-  // Se arrivo qui, sono sicuramente il padre
-  for(i = 2; i < argc; i++){
-    // Padre - Attendo la terminazione di uno dei figli
-    wait(&status);
+    // Esco senza errori
+    return 0;
   }
-
-  // Esco senza errori
-  return 0;
 }
