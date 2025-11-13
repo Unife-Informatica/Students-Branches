@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
   // Controllo il numero degli argomenti
   if(argc != 2){
     printf("Uso: ./anteprima <num>\n");
-    exit(1);
+    exit(2);
   }
 
   /* atoi non rileva errori di conversione,
@@ -29,13 +29,12 @@ int main(int argc, char *argv[]){
   printf("Inserisci il nome del file di cui visualizzare l'anteprima (\"fine\" per uscire): ");
   scanf("%s", nome);
 
-  while(strcmp(nome,"fine") != 0){
+  while(strcmp(nome, "fine") != 0){
     // Per controllare se il file esiste, provo ad aprirlo
-    if((fd = open(nome, O_RDONLY)) < 0){
+    if((fd = open(nome, O_RDONLY))){
       /* La open potrebbe fallire anche se il file esiste,
          ad esempio nel caso manchino i permessi di lettura.
-         Per gestire la differenza, possiamo guardare il valore di errno.
-      */
+         Per gestire la differenza, possiamo guardare il valore di errno. */
       if(errno == ENOENT){
         printf("Il file %s non esiste\n", nome);
       }else{
@@ -46,8 +45,7 @@ int main(int argc, char *argv[]){
     }else{
       /* Chiudo il file, che a questo punto esiste.
          Lasciandolo aperto, causeremmo un resource
-         leak, che va evitato.
-      */
+         leak, che va evitato. */
       close(fd);
       // Creo un figlio per visualizzare l'anteprima
       pid = fork();
@@ -57,16 +55,15 @@ int main(int argc, char *argv[]){
       }else if(pid == 0){
         // Figlio
         printf("\nAnteprima del file %s:\n", nome);
-        execlp("head","head","-n", argv[1], nome, (char *)0);
+        execlp("head", "head", "-n", argv[1], nome, (char *)0);
 
         perror("exec");
         exit(5);
       }
       /* Padre: aspetto che il figlio termini
-         --> esecuzione sequenziale!
-      */
+         --> esecuzione sequenziale! */
       wait(&status);
-    } // Fine if/else
+    } // Fine if / else
 
     printf("\nInserisci il nome del file di cui visualizzare l'anteprima (\"fine\" per uscire): ");
     scanf("%s", nome);
