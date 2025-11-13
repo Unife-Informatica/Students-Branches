@@ -1,0 +1,15 @@
+current_dir="$1"
+giorno=""
+liv_min=0
+for elemento in "$current_dir";
+do
+	case "$elemento" in
+		*.txt)
+			while read liv nome_corso loc soglia timestamp altro;
+			do
+				if [ "$nome_corso" = "$nome" ];
+				then
+					echo "$liv $loc $timestamp" >> "$output"
+					if [
+			done < "$elemento"
+done

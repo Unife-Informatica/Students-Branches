@@ -1,0 +1,10 @@
+1 Lavatrice 350.0
+2 Frigorifero 500.0
+3 Televisore 250.0
+4 Microonde 80.0
+5 Aspirapolvere 120.0
+6 LavatriciAsciugatrice 450.0
+7 Condizionatore 600.0
+8 Stufa 150.0
+9 MacchinaCaffe 90.0
+10 Forno 200.0

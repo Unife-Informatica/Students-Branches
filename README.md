@@ -1,14 +1,16 @@
-# UNIFE
+# Gabriele Lambertini| Amici al Byte - Materiale Didattico per Studenti di Informatica (Unife)
 
-Benvenuto nella repository degli appunti di [UNIFE](https://www.unife.it/it)🎓
+## Benvenuti!
 
-Questa repository raccoglie appunti, esercizi e materiali condivisi dagli studenti della nostra community. Ogni studente ha il proprio branch personale dove può caricare i propri materiali.
+Questo repository è appartenente a Gabriele Lambertini e contiene file delle materie didattiche.
 
-## Come contribuire
+## Struttura del Repository
 
-Se vuoi aggiungere o aggiornare appunti, leggi prima le istruzioni di contribuzione qui:
-[CONTRIBUTE](https://github.com/stack-notes/.github/blob/main/CONTRIBUTE.md)
+Il repository è organizzato in cartelle, a seconda della tua necessita'. 
 
----
+## Linee Guida
 
-Grazie per contribuire alla crescita della nostra community! 💡
+* **Chiarezza e organizzazione:** 
+  Assicurati che i file siano ben organizzati e nominati in modo chiaro.
+* **Rispetto e collaborazione:** 
+  Mantieni un ambiente di collaborazione positivo e rispetta il lavoro degli altri.

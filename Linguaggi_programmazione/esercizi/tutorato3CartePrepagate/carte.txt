@@ -1,0 +1,10 @@
+C001 15 true
+C002 8 false
+C003 20 true
+C004 0 false
+C005 5 true
+C006 12 true
+C007 3 false
+C008 10 true
+C009 7 true
+C010 0 false
