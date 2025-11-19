@@ -29,3 +29,22 @@ Lo Stream è una sequenza di elementi che possono essere ciclati in modo sequenz
   ```java
   stream.forEach(System.out::println)
   ```
+
+## Tipi funzionali
+
+### Predicate<T>
+Serve per fare una domanda ad un elemento
+Restituisce un booleano.
+
+### Function<T, R>
+Entra un tipo T, esce un tipo R
+
+### Consumer<T>
+Entra un valore e restituisce void
+Serve per fare un azione (stampa, aggiungi, ...)
+
+### Supplier<T>
+Non prende input e restituisce un valore di tipo T
+
+### Comparator<T>
+Prende due valori e restituisce un intero
