@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="605.0" stylesheets="@Overview.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unife.lp.view.ActivityOverviewController">
+   <children>
+      <TableView fx:id="activityTable" layoutX="14.0" layoutY="8.0" prefHeight="131.0" prefWidth="247.0">
+         <columns>
+            <TableColumn fx:id="activityColummn" prefWidth="257.59999426603315" text="Attività" />
+         </columns>
+      </TableView>
+      <TableView fx:id="subTable" layoutX="14.0" layoutY="197.0" prefHeight="142.0" prefWidth="247.0">
+         <columns>
+            <TableColumn fx:id="subNameColumn" prefWidth="123.0" text="Nome " />
+            <TableColumn fx:id="subSurnameColumn" prefWidth="136.0" text="Cognome " />
+         </columns>
+      </TableView>
+      <Button layoutX="14.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleDeleteSub" prefHeight="34.0" prefWidth="122.0" text="Rimuovi iscritto" />
+      <Button layoutX="147.0" layoutY="353.0" mnemonicParsing="false" onAction="#handleNewSub" prefHeight="34.0" prefWidth="114.0" text="Nuovo iscritto" />
+      <Button layoutX="129.0" layoutY="147.0" mnemonicParsing="false" onAction="#handleNewActivity" prefHeight="34.0" prefWidth="132.0" text="Nuova Attività" />
+      <GridPane layoutX="306.0" layoutY="99.0" prefHeight="222.0" prefWidth="349.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.5999755859375" minWidth="10.0" prefWidth="112.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.5999755859375" minWidth="10.0" prefWidth="237.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Nome" />
+            <Label fx:id="classNameLabel" text="Label" GridPane.columnIndex="1" />
+            <Label text="Istruttore" GridPane.rowIndex="1" />
+            <Label fx:id="teacherLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Orario" GridPane.rowIndex="2" />
+            <Label fx:id="hourLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Descrizione" GridPane.rowIndex="3" />
+            <Label fx:id="descLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Label layoutX="303.0" layoutY="74.0" text="Dettagli attività" />
+      <Button layoutX="480.0" layoutY="353.0" mnemonicParsing="false" onAction="#handleEditActivity" prefHeight="26.0" prefWidth="94.0" text="Modifica" />
+      <Button layoutX="379.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleDeleteActivity" prefHeight="34.0" prefWidth="84.0" text="Rimuovi" />
+   </children>
+</AnchorPane>

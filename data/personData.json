@@ -1,0 +1,23 @@
+[
+    {
+        "nome": "Michael",
+        "cognome": "gaviani",
+        "birthday": [2000, 1, 1],
+        "address": "Ferrara",
+        "phone": "321 4567890",
+        "email": "esempio@gmail.com",
+        "iscritto": "si",
+        "presenze": [
+            {
+                "date": [2025, 1, 23],
+                "entranceHour": 12,
+                "exitHour": 14
+            },
+            {
+                "date": [2025, 1, 23],
+                "entranceHour": 13,
+                "exitHour": 15
+            }
+        ]
+    }
+]

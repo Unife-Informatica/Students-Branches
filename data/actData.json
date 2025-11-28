@@ -1,0 +1,104 @@
+[
+    {
+        "istruttore": "Emanuela Antolini",
+        "orario": "",
+        "nome": "Yoga",
+        "descrizione": "",
+        "iscritti": [
+            {
+                "nome": "Sirius",
+                "cognome": "Black",
+                "birthday": [2000, 1, 1],
+                "address": "Ferrara",
+                "phone": "321 4567890",
+                "email": "esempio@gmail.com",
+                "iscritto": "No",
+                "presenze": [
+                    {
+                        "date": [2025, 1, 21],
+                        "entranceHour": 14,
+                        "exitHour": 15
+                    }
+                ]
+            },
+            {
+                "nome": "Dario",
+                "cognome": "Briguglio",
+                "birthday": [2000, 1, 1],
+                "address": "Ferrara",
+                "phone": "321 4567890",
+                "email": "esempio@gmail.com",
+                "iscritto": "Si",
+                "presenze": [
+                    {
+                        "date": [2025, 1, 21],
+                        "entranceHour": 12,
+                        "exitHour": 14
+                    }
+                ]
+            },
+            {
+                "nome": "Ronald",
+                "cognome": "Wisley",
+                "birthday": [2000, 1, 1],
+                "address": "Ferrara",
+                "phone": "321 4567890",
+                "email": "esempio@gmail.com",
+                "iscritto": "No",
+                "presenze": []
+            },
+            {
+                "nome": "Hermione",
+                "cognome": "Granger",
+                "birthday": [2000, 1, 1],
+                "address": "Ferrara",
+                "phone": "321 4567890",
+                "email": "esempio@gmail.com",
+                "iscritto": "No",
+                "presenze": []
+            }
+        ]
+    },
+    {
+        "istruttore": "Gabriele Munari",
+        "orario": "",
+        "nome": "Aerobica",
+        "descrizione": "",
+        "iscritti": [
+            {
+                "nome": "Ronald",
+                "cognome": "Wisley",
+                "birthday": [2000, 1, 1],
+                "address": "Ferrara",
+                "phone": "321 4567890",
+                "email": "esempio@gmail.com",
+                "iscritto": "No",
+                "presenze": []
+            },
+            {
+                "nome": "Hermione",
+                "cognome": "Granger",
+                "birthday": [2000, 1, 1],
+                "address": "Ferrara",
+                "phone": "321 4567890",
+                "email": "esempio@gmail.com",
+                "iscritto": "No",
+                "presenze": []
+            }
+        ]
+    },
+    {
+        "istruttore": "Michael Jackson",
+        "orario": "12-14",
+        "nome": "Nuoto",
+        "descrizione": "Corso di nuoto",
+        "iscritti": []
+    },
+    {
+        "istruttore": "Michael Jackson",
+        "orario": "12-14",
+        "nome": "Corso",
+        "descrizione": "ciao",
+        "iscritti": []
+    }
+]

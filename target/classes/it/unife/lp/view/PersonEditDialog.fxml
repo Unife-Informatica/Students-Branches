@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" stylesheets="@Overview.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unife.lp.view.PersonEditDialogController">
+   <children>
+      <ButtonBar layoutX="190.0" layoutY="248.0" prefHeight="37.0" prefWidth="162.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#handleOk" text="Ok" />
+            <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+        </buttons>
+      </ButtonBar>
+      <Label layoutX="48.0" layoutY="38.0" text="Nome" />
+      <Label layoutX="46.0" layoutY="66.0" text="Cognome" />
+      <Label layoutX="44.0" layoutY="93.0" text="Data di nascita" />
+      <Label layoutX="44.0" layoutY="121.0" text="Indirizzo" />
+      <Label layoutX="44.0" layoutY="150.0" text="Cellulare" />
+      <Label layoutX="46.0" layoutY="176.0" text="Email" />
+      <Label layoutX="46.0" layoutY="204.0" text="Iscritto" />
+      <TextField fx:id="firstNameField" layoutX="200.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="162.0" />
+      <TextField fx:id="lastNameField" layoutX="200.0" layoutY="69.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="162.0" />
+      <TextField fx:id="birthdayField" layoutX="200.0" layoutY="96.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="162.0" />
+      <TextField fx:id="addressField" layoutX="200.0" layoutY="124.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="162.0" />
+      <TextField fx:id="phoneField" layoutX="200.0" layoutY="152.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="162.0" />
+      <TextField fx:id="emailField" layoutX="200.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="162.0" />
+      <TextField fx:id="subField" layoutX="200.0" layoutY="208.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="162.0" />
+   </children>
+</AnchorPane>

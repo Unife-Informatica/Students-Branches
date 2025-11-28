@@ -1,0 +1,74 @@
+.root {
+    -fx-background-color: #2b2b2b;
+}
+
+.anchor-pane {
+    -fx-background-color: #2b2b2b;
+}
+
+.vbox {
+    -fx-background-color: #2b2b2b;
+}
+
+.bar-chart {
+    -fx-background-color: #2b2b2b;
+    -fx-legend-visible: false;
+}
+
+.bar-chart .chart-plot-background {
+    -fx-background-color: #2b2b2b;
+}
+
+.bar-chart .chart-legend {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: white;
+}
+
+.bar-chart .chart-title {
+    -fx-text-fill: white;
+    -fx-font-size: 16pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+
+.category-axis .axis-label {
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+.category-axis .tick-label {
+    -fx-text-fill: white;
+    -fx-font-size: 10pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+
+.number-axis .axis-label {
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+.number-axis .tick-label {
+    -fx-text-fill: white;
+    -fx-font-size: 10pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #00bfff; 
+    -fx-bar-width: 20px; 
+}
+
+.default-color0.chart-bar:hover {
+    -fx-bar-fill: #1e90ff; 
+}
+
+.chart-horizontal-grid-lines .chart-grid-line {
+    -fx-stroke: #444;
+}
+
+.chart-vertical-grid-lines .chart-grid-line {
+    -fx-stroke: #444;
+}
