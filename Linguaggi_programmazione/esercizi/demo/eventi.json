@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "data": "2025-03-12",
+    "ora": 21,
+    "capienzaMax": 500,
+    "prezzoBiglietto": 35.5,
+    "descrizione": "Concerto rock - The Electric Waves"
+  },
+  {
+    "id": 2,
+    "data": "2025-04-05",
+    "ora": 18,
+    "capienzaMax": 300,
+    "prezzoBiglietto": 28.0,
+    "descrizione": "Spettacolo teatrale - La Locandiera"
+  },
+  {
+    "id": 3,
+    "data": "2025-05-20",
+    "ora": 16,
+    "capienzaMax": 200,
+    "prezzoBiglietto": 12.0,
+    "descrizione": "Mostra d'arte contemporanea"
+  },
+  {
+    "id": 4,
+    "data": "2025-06-10",
+    "ora": 22,
+    "capienzaMax": 800,
+    "prezzoBiglietto": 45.0,
+    "descrizione": "Festival di musica elettronica"
+  },
+  {
+    "id": 5,
+    "data": "2025-07-02",
+    "ora": 20,
+    "capienzaMax": 250,
+    "prezzoBiglietto": 10.0,
+    "descrizione": "Proiezione cinema all'aperto - Inception"
+  },
+  {
+    "id": 6,
+    "data": "2025-08-15",
+    "ora": 19,
+    "capienzaMax": 350,
+    "prezzoBiglietto": 18.5,
+    "descrizione": "Serata comica con artisti locali"
+  }
+]

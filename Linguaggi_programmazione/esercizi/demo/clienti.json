@@ -1,0 +1,43 @@
+[ {
+  "nome" : "Luca",
+  "cognome" : "Rossi",
+  "email" : "luca.rossi@example.com",
+  "numTelefono" : "3456789012",
+  "id" : "1",
+  "eta" : 28
+}, {
+  "nome" : "Giulia",
+  "cognome" : "Bianchi",
+  "email" : "giulia.bianchi@example.com",
+  "numTelefono" : "3491122334",
+  "id" : "2",
+  "eta" : 32
+}, {
+  "nome" : "Marco",
+  "cognome" : "Verdi",
+  "email" : "marco.verdi@example.com",
+  "numTelefono" : "3204455667",
+  "id" : "3",
+  "eta" : 41
+}, {
+  "nome" : "Francesco",
+  "cognome" : "Neri",
+  "email" : "francesco.neri@example.com",
+  "numTelefono" : "3475566778",
+  "id" : "5",
+  "eta" : 36
+}, {
+  "nome" : "Elena",
+  "cognome" : "Puttana",
+  "email" : "elena.fontana@example.com",
+  "numTelefono" : "3457768879",
+  "id" : "6",
+  "eta" : 29
+}, {
+  "nome" : "Mattia",
+  "cognome" : "Chiaro",
+  "email" : "mattia.chiaro@example.com",
+  "numTelefono" : "3635254676",
+  "id" : "7",
+  "eta" : 22
+} ]
