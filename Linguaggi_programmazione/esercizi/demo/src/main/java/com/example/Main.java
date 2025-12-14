@@ -1,9 +1,5 @@
 package com.example;
 
-import java.util.List;
-
-import com.example.model.Cliente;
-import com.example.storage.DatabaseClienti;
 import com.example.ui.ClientiView;
 
 import javafx.application.Application;
@@ -15,14 +11,8 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage){
-        stage.setTitle("CLIENTI");
-
-        VBox layout = new VBox(25);
-        Scene clientiScene = new Scene(layout,1200,800);
-        stage.setScene(clientiScene);
-        stage.show();
-
         stage.setScene(ClientiView.getSceneClienti(stage));
+        stage.show();
     }
     public static void main(String[] args) {
        launch(args);
