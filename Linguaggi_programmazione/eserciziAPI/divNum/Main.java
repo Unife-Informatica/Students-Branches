@@ -8,11 +8,11 @@ public class Main {
   public static void main(String[] args) {
     List<Integer> numbers = asList(1,2,3,4,5);
 
-    Set<Integer> risultato = divNum(numbers);
-    System.out.println(risultato);
+    Set<Integer> ris = calcola(numbers);
+    System.out.println(ris);
   }
 
-  public static Set<Integer> divNum(List<Integer> numbers){
+  public static Set<Integer> calcola(List<Integer> numbers){
     return numbers.stream().map(n -> n/2).collect(Collectors.toSet());
   }
 }
