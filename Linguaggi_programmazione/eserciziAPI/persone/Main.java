@@ -1,6 +1,5 @@
 import static java.util.Arrays.asList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -14,22 +13,15 @@ public class Main {
     List<Persona> listaPersone = Arrays.asList(p1,p2,p3);
 
     // Soluzione con Stream
-      Map<String, List<Persona>> personePerPassione = listaPersone.stream()
-          .filter(p -> p.getEta() >= 18)                     // Filtra i maggiorenni
-          .sorted(Comparator.comparing(Persona::getEta))     // Ordina per età
-          .collect(Collectors.groupingBy(                    // Raggruppa per prima passione
-              p -> p.getPassioni().isEmpty() ? 
-                   "Senza passione" : p.getPassioni().get(0)
-          ));
-      // Stampa i risultati
-      personePerPassione.forEach((passione, personeConPassione) -> {
-          System.out.println("Passione: " + passione);
-          System.out.println("Numero persone: " + personeConPassione.size());
-          personeConPassione.forEach(p -> 
-              System.out.println("   " + p.getNome() + " " + p.getCognome() +
-                                 " (Età: " + p.getEta() + ")")
-          );
-          System.out.println();
+    Map<String, List<Persona>> personaPerPassione = listaPersone.stream()
+    .filter(p -> p.getEta() >= 18)
+    .sorted(Comparator.comparing(Persona::getEta))
+    .collect(Collectors.groupingBy(p -> p.getPassioni().get(0)));
+    // Stampa i risultati
+      personaPerPassione.forEach((passione, personeConPassione)->{
+        System.out.println("Passione: " + passione);
+        System.out.println("Numero persone: " + personeConPassione.size());
+        personeConPassione.forEach(p -> System.out.println(" " + p.getNome() + " " + p.getCognome()));
       });
     }
 }
