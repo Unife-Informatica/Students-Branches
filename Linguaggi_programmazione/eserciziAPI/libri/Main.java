@@ -13,7 +13,7 @@ public class Main {
       new Book("Infinite Jest", "David Wallace", 2011, 50)
     );
     // 1 - filtrare i libri pubblicati dopo il 2010
-    List<Book> recentBooks = books.stream().filter(b -> b.getPublicationYear() > 2010).collect(Collectors.toList());
+    List<Book> recentBooks = books.stream().filter(l -> l.getPublicationYear() > 2010).collect(Collectors.toList());
     System.out.println(recentBooks);
 
     // 2 - ordinare la lista di libri in ordine crescente di prezzo
@@ -21,7 +21,7 @@ public class Main {
     System.out.println(sortedBooks);
 
     // 3 - creare una lista dei titoli dei libri scritti da un autore specifico
-    List<Book> authorBooks = books.stream().filter(b -> b.getAuthor().equals("Alessandro Manzoni")).collect(Collectors.toList());
+    List<Book> authorBooks = books.stream().filter(l -> l.getAuthor().equals("Alessandro Manzoni")).collect(Collectors.toList());
     System.out.println(authorBooks);
 
     // 4 - calcolare la media dei prezzi di tutti i libri
@@ -29,11 +29,11 @@ public class Main {
     System.out.println("Media: " + averageBooks);
 
     // 5 - trovare il libro con il prezzo più alto
-    Optional<Book> maxBook = books.stream().max(Comparator.comparingDouble(b -> b.getPrice()));
+    Optional<Book> maxBook = books.stream().max(Comparator.comparingDouble(l -> l.getPrice()));
     System.out.println(maxBook.orElse(null));
 
     // 6 - controllare se c'è almeno un libro che costa più di 30 euro
-    boolean overBook = books.stream().anyMatch(b -> b.getPrice() > 30);
+    boolean overBook = books.stream().anyMatch(l -> l.getPrice() > 30);
     System.out.println(overBook);
 
     // 7 - stampare i libri ordinati per anno di pubblicazione in ordine decrescente
