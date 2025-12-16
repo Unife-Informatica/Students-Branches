@@ -20,15 +20,15 @@ public class Main {
     System.out.println(prodottiFiltrati);
 
     // 2 - trovare il prodotto più caro di ogni categoria
-    Map<String,Optional<Prodotto>> prodottoPiuCaroPerCategoria = listaProdotti.stream().collect(Collectors.groupingBy(Prodotto::getCategoria,Collectors.maxBy(Comparator.comparingDouble(Prodotto::getPrezzo))));
-    prodottoPiuCaroPerCategoria.forEach((categoria, prodotto) -> System.out.println(categoria + ":" + prodotto.orElse(null)));
+    Map<String,Optional<Prodotto>> prodottoPiuCaroPerCategoria = listaProdotti.stream().collect(Collectors.groupingBy(Prodotto::getCategoria, Collectors.maxBy(Comparator.comparingDouble(Prodotto::getPrezzo))));
+    prodottoPiuCaroPerCategoria.forEach((categoria,prodotto) -> System.out.println(categoria + ": " + prodotto.orElse(null)));
 
     // 3 - calcolare il prezzo medio di tutti i prodotti
-    double media = listaProdotti.stream().mapToDouble(Prodotto::getPrezzo).average().orElse(0);
-    System.out.println("Prezzo medio: " + media);
+    double media = listaProdotti.stream().mapToDouble(Prodotto::getPrezzo).average().orElse(0.0);
+    System.out.println("Media: " + media);
 
     // 4 - creare una mappa dove la chiave è la categoria e il valore è una lista dei nomi dei prodotti in quella categoria
-    Map<String,List<String>> prodottiPerCategorie = listaProdotti.stream().collect(Collectors.groupingBy(Prodotto::getCategoria,Collectors.mapping(Prodotto::getNome, Collectors.toList())));
-    prodottiPerCategorie.forEach((categoria, nomi) -> System.out.println(categoria + ":" + nomi));
+    Map<String, List<String>> prodottiPerCategoria = listaProdotti.stream().collect(Collectors.groupingBy(Prodotto::getCategoria, Collectors.mapping(Prodotto::getNome, Collectors.toList())));
+    prodottiPerCategoria.forEach((categoria, nomi) -> System.out.println(categoria + ": " + nomi));
   }
 }
