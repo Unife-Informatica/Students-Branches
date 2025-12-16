@@ -24,23 +24,30 @@ public class Main{
 
     // 1 - filtrare persone con età > 30
     List<Persona> maggiori30 = persone.stream().filter(p -> p.getEta() > 30).collect(Collectors.toList());
+    System.out.println(maggiori30);
 
     // 2 - Estrarre nomi delle persone che vivono a Milano
     List<String> nomiMilano = persone.stream().filter(p -> p.getCitta().equals("Milano")).map(Persona::getNome).collect(Collectors.toList());
+    System.out.println(nomiMilano);
 
     // 3 - Calcolare età media delle donne
-    OptionalDouble etaMediaFemmine = persone.stream().filter(p -> p.getGenere() == Genere.FEMMINA).mapToInt(Persona::getEta).average();
+    OptionalDouble etaMediaFemminile = persone.stream().filter(p -> p.getGenere() == Genere.FEMMINA).mapToInt(Persona::getEta).average();
+    System.out.println(etaMediaFemminile);
 
     // 4 - Trovare la persona più giovane
     Optional<Persona> piuGiovane = persone.stream().min(Comparator.comparingInt(Persona::getEta));
+    System.out.println(piuGiovane);
 
     // 5 - Raggruppare per città
     Map<String,List<Persona>> personePerCitta = persone.stream().collect(Collectors.groupingBy(Persona::getCitta));
+    System.out.println(personePerCitta);
 
     // 6 - Verificare se tutte le persone sono maggiorenni
     boolean tutteMaggiorenni = persone.stream().map(p -> p.getEta() >= 18).reduce(true, (a,b) -> a && b);
+    System.out.println(tutteMaggiorenni);
 
     // 7 - Contare quante persone vivono a Roma
     long conteggioRoma = persone.stream().filter(p -> p.getCitta().equals("Roma")).count();
+    System.out.println(conteggioRoma);
   }
 }
