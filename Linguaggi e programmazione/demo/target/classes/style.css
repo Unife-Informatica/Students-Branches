@@ -1,0 +1,167 @@
+/* ============================
+      ROOT E SFONDO GENERALE
+   ============================ */
+   .root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-background-color: linear-gradient(to bottom right, #0D1117, #1C2530, #233545);
+    -fx-padding: 20px;
+}
+
+/* ============================
+      TITOLO PRINCIPALE
+   ============================ */
+.tlt {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #EBF4FF;
+    -fx-letter-spacing: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(90,140,255,0.35), 14, 0.3, 0, 2);
+}
+
+/* ============================
+      TABLEVIEW STILE MODERNO
+   ============================ */
+.table-view {
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-border-color: rgba(255,255,255,0.15);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.table-column-header, .column-header-background {
+    -fx-background-color: rgba(255,255,255,0.08);
+    -fx-border-color: transparent;
+    -fx-padding: 5 10;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:filled:selected, .table-row-cell:focused {
+    -fx-background-color: rgba(120,160,255,0.35);
+}
+
+.table-cell {
+    -fx-text-fill: #E6EEF8;
+}
+
+/* ============================
+      CAMPO DI RICERCA
+   ============================ */
+.fieldCerca, .field-cerca {
+    -fx-background-color: rgba(255,255,255,0.12);
+    -fx-padding: 8 12;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: rgba(255,255,255,0.2);
+    -fx-border-width: 1.2px;
+    -fx-font-size: 15px;
+    -fx-text-fill: #E6EEF8;
+    -fx-prompt-text-fill: rgba(230,238,248,0.6);
+}
+
+.fieldCerca:hover, .field-cerca:hover {
+    -fx-background-color: rgba(255,255,255,0.18);
+}
+
+.fieldCerca:focused, .field-cerca:focused {
+    -fx-border-color: #7BA7FF;
+    -fx-effect: dropshadow(gaussian, rgba(80,120,255,0.35), 8, 0.2, 0, 0);
+}
+
+/* ============================
+        PULSANTI MODERNI
+   ============================ */
+.btn, .button, .btnCerca {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F0F6FF;
+    -fx-background-color: rgba(255,255,255,0.07);
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-border-color: rgba(255,255,255,0.18);
+    -fx-border-width: 1.3px;
+    -fx-padding: 10 20;
+    -fx-pref-height: 45px;
+    -fx-pref-width: 220px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 8, 0.2, 0, 2);
+    -fx-transition: 0.2s;
+}
+
+.btn:hover, .button:hover, .btnCerca:hover {
+    -fx-background-color: rgba(255,255,255,0.12);
+    -fx-effect: dropshadow(gaussian, rgba(100,150,255,0.4), 10, 0.25, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.btn:pressed, .button:pressed, .btnCerca:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+    -fx-background-color: rgba(255,255,255,0.10);
+}
+
+/* ============================
+        MENU ORIZZONTALE
+   ============================ */
+.menuModern {
+    -fx-padding: 6 16;
+    -fx-spacing: 12;
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.2, 0, 1);
+}
+
+.menuModern .button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #DCE9F9;
+    -fx-font-size: 15px;
+    -fx-padding: 6 12;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+}
+
+.menuModern .button:hover {
+    -fx-background-color: rgba(255,255,255,0.12);
+}
+
+.menuModern .button:pressed {
+    -fx-background-color: rgba(255,255,255,0.2);
+}
+
+
+
+/* ============================
+        DATE PICKER
+   ============================ */
+.date-picker {
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-background-color: rgba(255,255,255,0.12);
+    -fx-border-color: rgba(255,255,255,0.2);
+    -fx-padding: 6 10;
+    -fx-font-size: 14px;
+    -fx-text-fill: #E6EEF8;
+}
+.date-picker:focused {
+    -fx-border-color: #7BA7FF;
+}
+/* TableView righe prestiti */
+.table-row-attivo {
+    -fx-background-color: rgba(75,180,120,0.3);
+    -fx-text-fill: #F0F6FF;
+}
+
+.table-row-chiuso {
+    -fx-background-color: rgba(255,85,85,0.3);
+    -fx-text-fill: #F0F6FF;
+}
+
+/* Menu - bottone attivo */
+.menuModern .menu-button-active {
+    -fx-background-color: rgba(120,160,255,0.35);
+    -fx-text-fill: white;
+}

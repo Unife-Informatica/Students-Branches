@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/01/01.iml" filepath="$PROJECT_DIR$/EsEsame/01/01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-Compito/01-Compito.iml" filepath="$PROJECT_DIR$/01-Compito/01-Compito.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/03/03.iml" filepath="$PROJECT_DIR$/EsEsame/03/03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/04/04.iml" filepath="$PROJECT_DIR$/EsEsame/04/04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/05/05.iml" filepath="$PROJECT_DIR$/EsEsame/05/05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/06/06.iml" filepath="$PROJECT_DIR$/EsEsame/06/06.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/07/07.iml" filepath="$PROJECT_DIR$/EsEsame/07/07.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/08/08.iml" filepath="$PROJECT_DIR$/EsEsame/08/08.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/09/09.iml" filepath="$PROJECT_DIR$/EsEsame/09/09.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/09Pt.2/09Pt.2.iml" filepath="$PROJECT_DIR$/EsEsame/09Pt.2/09Pt.2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/10/10.iml" filepath="$PROJECT_DIR$/EsEsame/10/10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/11/11.iml" filepath="$PROJECT_DIR$/EsEsame/11/11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/12/12.iml" filepath="$PROJECT_DIR$/EsEsame/12/12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/17/17.iml" filepath="$PROJECT_DIR$/EsEsame/17/17.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/29/29.iml" filepath="$PROJECT_DIR$/EsEsame/29/29.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/29Pt.2/29Pt.2.iml" filepath="$PROJECT_DIR$/EsEsame/29Pt.2/29Pt.2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsEsame/29Pt.3/29Pt.3.iml" filepath="$PROJECT_DIR$/EsEsame/29Pt.3/29Pt.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api1/AnalPersone/AnalPersone.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api1/AnalPersone/AnalPersone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api2/Calcola/Calcola.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api2/Calcola/Calcola.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tutorati/tutorato3/Carta_Brano/Carta_Brano.iml" filepath="$PROJECT_DIR$/tutorati/tutorato3/Carta_Brano/Carta_Brano.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api3/Conto/Conto.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api3/Conto/Conto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api3/CountEvenNumber/CountEvenNumber.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api3/CountEvenNumber/CountEvenNumber.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api4/DivNum/DivNum.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api4/DivNum/DivNum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api1/DivNum/DivNum2.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api1/DivNum/DivNum2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api4/F5DNF17/F5DNF17.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api4/F5DNF17/F5DNF17.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api1/First5NumberDivFor17/First5NumberDivFor17.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api1/First5NumberDivFor17/First5NumberDivFor17.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api3/FirtsPrimeNumberEven/FirtsPrimeNumberEven.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api3/FirtsPrimeNumberEven/FirtsPrimeNumberEven.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tutorati/tutorato2/GestioneVideoteca/GestioneVideoteca.iml" filepath="$PROJECT_DIR$/tutorati/tutorato2/GestioneVideoteca/GestioneVideoteca.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tutorati/tutorato2/GestioneVideotecaPt2/GestioneVideotecaPt2.iml" filepath="$PROJECT_DIR$/tutorati/tutorato2/GestioneVideotecaPt2/GestioneVideotecaPt2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api2/Libreria/Libreria.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api2/Libreria/Libreria.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api1/Libri/Libri.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api1/Libri/Libri.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Linguaggi e programmazione.iml" filepath="$PROJECT_DIR$/Linguaggi e programmazione.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tutorati/tutorato3/Negozio/Negozio.iml" filepath="$PROJECT_DIR$/tutorati/tutorato3/Negozio/Negozio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/esJava/cazzeggio/Noleggio_Auto/Noleggio_Auto.iml" filepath="$PROJECT_DIR$/esJava/cazzeggio/Noleggio_Auto/Noleggio_Auto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api4/Ordinamento/Ordinamento.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api4/Ordinamento/Ordinamento.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api1/Persone/Persone.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api1/Persone/Persone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api1/Prodotti/Prodotti.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api1/Prodotti/Prodotti.iml" />
+      <module fileurl="file://$PROJECT_DIR$/esJava/cazzeggio/Prova_IO/Prova_IO.iml" filepath="$PROJECT_DIR$/esJava/cazzeggio/Prova_IO/Prova_IO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api1/Sort/Sort.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api1/Sort/Sort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api3/Spesa/Spesa.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api3/Spesa/Spesa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api3/StringList/StringList.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api3/StringList/StringList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api3/StringList2/StringList2.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api3/StringList2/StringList2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api1/StringMaxLenght/StringMaxLenght.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api1/StringMaxLenght/StringMaxLenght.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api3/Stringhe/Stringhe.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api3/Stringhe/Stringhe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api1/Transazioni/Transazioni.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api1/Transazioni/Transazioni.iml" />
+      <module fileurl="file://$PROJECT_DIR$/esJava/auto/auto.iml" filepath="$PROJECT_DIR$/esJava/auto/auto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/esJava/cazzeggio/cazzegfgio/cazzegfgio.iml" filepath="$PROJECT_DIR$/esJava/cazzeggio/cazzegfgio/cazzegfgio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tutorati/tutorato2/e-commerce/e-commerce.iml" filepath="$PROJECT_DIR$/tutorati/tutorato2/e-commerce/e-commerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tutorati/tutorato2/e-commercePt2/e-commercePt2.iml" filepath="$PROJECT_DIR$/tutorati/tutorato2/e-commercePt2/e-commercePt2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stream-Api/Stream-Api4/maxLengthString/maxLengthString.iml" filepath="$PROJECT_DIR$/Stream-Api/Stream-Api4/maxLengthString/maxLengthString.iml" />
+    </modules>
+  </component>
+</project>

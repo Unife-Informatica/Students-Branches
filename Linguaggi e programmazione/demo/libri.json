@@ -1,0 +1,92 @@
+[ {
+  "titolo" : "I Promessi Sposi",
+  "autore" : "Alessandro Manzoni",
+  "genere" : "Romanzo storico",
+  "anno" : 1827,
+  "isbn" : "9780140449136",
+  "ISBN" : "9780140449136"
+}, {
+  "titolo" : "Se questo è un uomo",
+  "autore" : "Primo Levi",
+  "genere" : "Memoria / Autobiografia",
+  "anno" : 1947,
+  "isbn" : "9788806221537",
+  "ISBN" : "9788806221537"
+}, {
+  "titolo" : "Il Signore degli Anelli",
+  "autore" : "J.R.R. Tolkien",
+  "genere" : "Fantasy",
+  "anno" : 1954,
+  "isbn" : "9788807901912",
+  "ISBN" : "9788807901912"
+}, {
+  "titolo" : "Il Gattopardo",
+  "autore" : "Giuseppe Tomasi di Lampedusa",
+  "genere" : "Romanzo storico",
+  "anno" : 1958,
+  "isbn" : "9788804679352",
+  "ISBN" : "9788804679352"
+}, {
+  "titolo" : "Cent'anni di solitudine",
+  "autore" : "Gabriel García Márquez",
+  "genere" : "Realismo magico",
+  "anno" : 1967,
+  "isbn" : "9788804681676",
+  "ISBN" : "9788804681676"
+}, {
+  "titolo" : "Il Piccolo Principe",
+  "autore" : "Antoine de Saint-Exupéry",
+  "genere" : "Fiaba / Letteratura per ragazzi",
+  "anno" : 1943,
+  "isbn" : "9780156013987",
+  "ISBN" : "9780156013987"
+}, {
+  "titolo" : "1984",
+  "autore" : "George Orwell",
+  "genere" : "Distopico",
+  "anno" : 1949,
+  "isbn" : "9780451524935",
+  "ISBN" : "9780451524935"
+}, {
+  "titolo" : "La Divina Commedia",
+  "autore" : "Dante Alighieri",
+  "genere" : "Poema epico",
+  "anno" : 1320,
+  "isbn" : "9788804644503",
+  "ISBN" : "9788804644503"
+}, {
+  "titolo" : "Il Vecchio e il Mare",
+  "autore" : "Ernest Hemingway",
+  "genere" : "Romanzo breve",
+  "anno" : 1952,
+  "isbn" : "9780684801223",
+  "ISBN" : "9780684801223"
+}, {
+  "titolo" : "Harry Potter e la Pietra Filosofale",
+  "autore" : "J.K. Rowling",
+  "genere" : "Fantasy",
+  "anno" : 1997,
+  "isbn" : "9780747532699",
+  "ISBN" : "9780747532699"
+}, {
+  "titolo" : "Il Codice Da Vinci",
+  "autore" : "Dan Brown",
+  "genere" : "Thriller",
+  "anno" : 2003,
+  "isbn" : "9780307474278",
+  "ISBN" : "9780307474278"
+}, {
+  "titolo" : "Orgoglio e Pregiudizio",
+  "autore" : "Jane Austen",
+  "genere" : "Romanzo",
+  "anno" : 1900,
+  "isbn" : "9780141439518",
+  "ISBN" : "9780141439518"
+}, {
+  "titolo" : "Lo Hobbit",
+  "autore" : "J.R.R. Tolkien",
+  "genere" : "Fantasy",
+  "anno" : 1937,
+  "isbn" : "9780261102217",
+  "ISBN" : "9780261102217"
+} ]
