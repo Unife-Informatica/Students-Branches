@@ -7,12 +7,16 @@
 - Operazione parallele e aggregate -> le operazioni che operano su questo flusso di elementi possono essere eseguite in parallelo.
 
 ## Pipelining
-È la segmentazione di un [[Process]] computazionale in diversi sottoprocessi eseguiti da unità autonome dedicate. Le pipeline vengono usate dalle stream API per ottenere un'esecuzione efficiente in ciascuna serie di istruzioni.
+È la segmentazione di un processo computazionale in diversi sottoprocessi eseguiti da unità autonome dedicate. Le pipeline vengono usate dalle stream API per ottenere un'esecuzione efficiente in ciascuna serie di istruzioni.
+
 ![imgs/img-1.png](./imgs/img-1.png)
+
 Il "calcolo complesso" C viene scomposto nei sottocalcoli (C1, C2 e C3). Questi calcoli vengono elaborati in parallelo e assimilati alla fine per ottenere il risultato finale.
 
 ## Struttura delle Stream API
+
 ![imgs/img-2.png](./imgs/img-2.png)
+
 Qualsiasi operazione implichi l'utilizzo delle stream api deve avere 3 componenti fondamentali:
 1. sorgente
 2. operazioni intermedie -> funzionano come una catena di montaggio, il dato viene lavorato da ogni operazione intermedia.
@@ -32,7 +36,9 @@ public class InfiniteStreams {
   }
 }
 ```
+
 ![imgs/img-3.png](./imgs/img-3.png)
+
 Come si vede all'interno del programma le operazioni vengono eseguite dopo l'esecuzione del `forEach()` questo ad esempio permette alla funzione `iterate()` di non generare una "lista infinita" di numeri ma limitarsi alla quantità definita in `limit()`.
 
 ## Tipi di operazioni intermedie
@@ -97,12 +103,14 @@ Restituisce un risultato true se **nessun** elemento del flusso corrisponde alla
 
 ## Collector
 I metodi Collector raccolgono gli elementi elaborati dal flusso in un contenitore per una rappresentazione finale.
+
 ![imgs/img-4.png](./imgs/img-4.png)
+
 Ecco le operazioni principali:
 
 | Operazioni                 | Metodi                | Scopo                                                                             |
 | -------------------------- | --------------------- | --------------------------------------------------------------------------------- |
-| media                      | `averaging()          |                                                                                   |
+| media                      | `averagingInt()`          |                                                                                   |
 | conteggio                  | `counting()`          |                                                                                   |
 | raggruppamento             | `groupingBy()`        |                                                                                   |
 | mappatura                  | `mapping()`           | Applica un'operazione a tutti gli elementi del flusso                             |
