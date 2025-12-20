@@ -17,7 +17,7 @@ public class MenuComponent {
 
     btnClienti.setOnAction(e -> stage.setScene(ClientiView.getSceneClienti(stage)));
     btnEventi.setOnAction(e -> stage.setScene(EventiView.getSceneEventi(stage)));
-    //btnBiglietti.setOnAction(e -> stage.setScene(BigliettiView.getSceneBiglietti(stage)));
+    btnBiglietti.setOnAction(e -> stage.setScene(BigliettiView.getSceneBiglietti(stage)));
 
     menu.getChildren().addAll(btnClienti, btnEventi, btnBiglietti);
 

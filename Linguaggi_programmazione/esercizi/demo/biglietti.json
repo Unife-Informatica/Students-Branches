@@ -1,5 +1,19 @@
-[
-  {
-    
-  }
-]
+[ {
+  "c" : {
+    "nome" : "Marco",
+    "cognome" : "Verdi",
+    "email" : "marco.verdi@example.com",
+    "numTelefono" : "3204455667",
+    "id" : "3",
+    "eta" : 41
+  },
+  "e" : {
+    "data" : "2025-07-02",
+    "descrizione" : "Proiezione cinema all'aperto - Inception",
+    "id" : "5",
+    "ora" : 20,
+    "capienzaMax" : 250,
+    "prezzoBiglietto" : 10.0
+  },
+  "dataAquisto" : "2025-12-20"
+} ]
