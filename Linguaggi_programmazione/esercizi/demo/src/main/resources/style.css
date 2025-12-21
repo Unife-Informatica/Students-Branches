@@ -1,0 +1,61 @@
+/* ROOT */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #f4f6f8;
+}
+
+/* NAV BAR (se MenuComponent usa HBox) */
+.hbox {
+    -fx-spacing: 10;
+}
+
+/* TEXT FIELD */
+.text-field {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #cfd8dc;
+    -fx-padding: 8;
+    -fx-font-size: 13px;
+}
+
+/* TABELLA */
+.table-view {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #d0d7de;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #e9ecef;
+}
+
+.table-view .column-header {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #90caf9;
+}
+
+/* BOTTONI */
+.button {
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-color: #42a5f5; /* colore principale più brillante */
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0.5, 0, 2); /* ombra leggera */
+}
+
+.button:hover {
+    -fx-background-color: #1e88e5; /* colore hover più scuro */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 6, 0.5, 0, 3); /* ombra più evidente al hover */
+    -fx-cursor: pointer;
+}
+
+/* FORM */
+.vbox {
+    -fx-spacing: 10;
+}

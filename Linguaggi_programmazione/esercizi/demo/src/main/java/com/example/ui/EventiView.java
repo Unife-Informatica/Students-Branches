@@ -126,6 +126,10 @@ public class EventiView {
         Scene scene = new Scene(root, 1200, 800);
         stage.setScene(scene);
 
+        scene.getStylesheets().add(
+        ClientiView.class.getResource("/style.css").toExternalForm()
+        );
+
         return scene;
     }
 
@@ -220,6 +224,11 @@ public class EventiView {
         form.setPadding(new Insets(15));
 
         Scene sceneForm = new Scene(form, 400, 330);
+
+        sceneForm.getStylesheets().add(
+        ClientiView.class.getResource("/style.css").toExternalForm()
+        );
+
         formStage.setScene(sceneForm);
         formStage.show();
     }

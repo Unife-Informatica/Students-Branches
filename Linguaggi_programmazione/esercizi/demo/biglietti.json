@@ -16,4 +16,22 @@
     "prezzoBiglietto" : 10.0
   },
   "dataAquisto" : "2025-12-20"
+}, {
+  "c" : {
+    "nome" : "Luca",
+    "cognome" : "Rossi",
+    "email" : "luca.rossi@example.com",
+    "numTelefono" : "3456789012",
+    "id" : "1",
+    "eta" : 28
+  },
+  "e" : {
+    "data" : "2025-04-05",
+    "descrizione" : "Spettacolo teatrale - La Locandiera",
+    "id" : "2",
+    "ora" : 18,
+    "capienzaMax" : 300,
+    "prezzoBiglietto" : 28.0
+  },
+  "dataAquisto" : "2025-12-21"
 } ]
