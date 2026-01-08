@@ -8,19 +8,26 @@ import javafx.stage.Stage;
 public class MenuComponent {
 
     public static HBox getMenu(Stage stage) {
-        HBox menu = new HBox();
+
+        HBox menu = new HBox(10);
         menu.setPadding(new Insets(10));
-        menu.setSpacing(10);
         menu.getStyleClass().add("menuModern");
 
-        Button btnUtenti = new Button("Utenti");
         Button btnLibri = new Button("Libri");
+        Button btnUtenti = new Button("Utenti");
         Button btnPrestiti = new Button("Prestiti");
 
-        // NAVIGAZIONE
-        btnUtenti.setOnAction(e -> stage.setScene(UtentiView.getSceneUtenti(stage)));
-        btnLibri.setOnAction(e -> stage.setScene(LibriView.getSceneLibri(stage)));
-        btnPrestiti.setOnAction(e -> stage.setScene(PrestitiView.getScenePrestiti(stage)));
+        btnLibri.setOnAction(e ->
+                stage.setScene(LibriView.getSceneLibri(stage))
+        );
+
+        btnUtenti.setOnAction(e ->
+                stage.setScene(UtentiView.getSceneUtenti(stage))
+        );
+
+        btnPrestiti.setOnAction(e ->
+                stage.setScene(PrestitiView.getScenePrestiti(stage))
+        );
 
         menu.getChildren().addAll(btnLibri, btnUtenti, btnPrestiti);
 

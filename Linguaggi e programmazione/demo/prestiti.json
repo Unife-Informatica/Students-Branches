@@ -1,1 +1,13 @@
-[ ]
+[ {
+  "isbn" : "9788804679352",
+  "ISBN" : "9788804679352",
+  "utente" : {
+    "id" : "U002",
+    "nome" : "Luca",
+    "cognome" : "Bianchi",
+    "email" : "luca.bianchi@example.com"
+  },
+  "dataInizio" : 1766358000000,
+  "dataFinePrevista" : 1768950000000,
+  "attivo" : true
+} ]

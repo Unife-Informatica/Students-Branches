@@ -3,12 +3,18 @@ package com.example.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Libro {
+
     @JsonProperty("ISBN")
     private String ISBN;
-    private String titolo, autore, genere;
+
+    private String titolo;
+    private String autore;
+    private String genere;
     private int anno;
 
-    public Libro(){/*costruttore vuoto */};
+    // Costruttore vuoto (necessario per Jackson)
+    public Libro() {
+    }
 
     public Libro(String ISBN, String titolo, String autore, String genere, int anno) {
         this.ISBN = ISBN;
@@ -60,7 +66,12 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Libro [ISBN=" + ISBN + ", titolo=" + titolo + ", autore=" + autore + ", genere=" + genere + ", anno="
-                + anno + "]";
+        return "Libro{" +
+                "ISBN='" + ISBN + '\'' +
+                ", titolo='" + titolo + '\'' +
+                ", autore='" + autore + '\'' +
+                ", genere='" + genere + '\'' +
+                ", anno=" + anno +
+                '}';
     }
 }

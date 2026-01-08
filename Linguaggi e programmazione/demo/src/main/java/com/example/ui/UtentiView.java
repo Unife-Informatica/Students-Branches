@@ -28,14 +28,9 @@ public class UtentiView {
 
         stage.setTitle("Gestione Utenti");
         HBox navBar = MenuComponent.getMenu(stage);
-        // ===========================
-        // CARICA UTENTI
-        // ===========================
+
         utenti = FXCollections.observableArrayList(DatabaseUtenti.caricaUtenti());
 
-        // ===========================
-        // RICERCA LIVE
-        // ===========================
         TextField cerca = new TextField();
         cerca.setPromptText("Cerca per ID, Nome, Cognome, Email");
         cerca.getStyleClass().add("fieldCerca");
@@ -44,22 +39,16 @@ public class UtentiView {
 
         cerca.textProperty().addListener((obs, oldText, newText) -> {
             String filtro = newText.toLowerCase().trim();
-            filteredUtenti.setPredicate(u -> {
-                if (filtro.isEmpty()) return true;
-                return u.getId().toLowerCase().contains(filtro)
+            filteredUtenti.setPredicate(u -> filtro.isEmpty()
+                    || u.getId().toLowerCase().contains(filtro)
                     || u.getNome().toLowerCase().contains(filtro)
                     || u.getCognome().toLowerCase().contains(filtro)
-                    || u.getEmail().toLowerCase().contains(filtro);
-            });
+                    || u.getEmail().toLowerCase().contains(filtro));
         });
 
         HBox barraRicerca = new HBox(cerca);
-        barraRicerca.setSpacing(10);
         HBox.setHgrow(cerca, Priority.ALWAYS);
 
-        // ===========================
-        // TABELLA
-        // ===========================
         TableView<Utente> table = new TableView<>(filteredUtenti);
 
         TableColumn<Utente, String> colId = new TableColumn<>("ID");
@@ -77,36 +66,23 @@ public class UtentiView {
         table.getColumns().addAll(colId, colNome, colCognome, colEmail);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        // ===========================
-        // PULSANTI
-        // ===========================
         Button btnAggiungi = new Button("Aggiungi");
-        btnAggiungi.getStyleClass().add("btn");
-
         Button btnModifica = new Button("Modifica");
-        btnModifica.getStyleClass().add("btn");
-
         Button btnRimuovi = new Button("Rimuovi");
+
+        btnAggiungi.getStyleClass().add("btn");
+        btnModifica.getStyleClass().add("btn");
         btnRimuovi.getStyleClass().add("btn");
 
         HBox hbAzioni = new HBox(10, btnAggiungi, btnModifica, btnRimuovi);
 
-        // ===========================
-        // FUNZIONE GENERALE PER AGGIORNARE
-        // ===========================
         Runnable aggiorna = () -> {
             table.refresh();
             DatabaseUtenti.salvaUtenti(utenti);
         };
 
-        // ===========================
-        // AGGIUNGI
-        // ===========================
         btnAggiungi.setOnAction(e -> apriForm(null, aggiorna));
 
-        // ===========================
-        // MODIFICA
-        // ===========================
         btnModifica.setOnAction(e -> {
             Utente selezionato = table.getSelectionModel().getSelectedItem();
             if (selezionato != null) {
@@ -116,9 +92,6 @@ public class UtentiView {
             }
         });
 
-        // ===========================
-        // RIMUOVI
-        // ===========================
         btnRimuovi.setOnAction(e -> {
             Utente selezionato = table.getSelectionModel().getSelectedItem();
             if (selezionato != null) {
@@ -129,10 +102,7 @@ public class UtentiView {
             }
         });
 
-        // ===========================
-        // LAYOUT FINALE
-        // ===========================
-        VBox root = new VBox(10,navBar, barraRicerca, table, hbAzioni);
+        VBox root = new VBox(10, navBar, barraRicerca, table, hbAzioni);
         root.setPadding(new Insets(10));
 
         Scene scene = new Scene(root, 1200, 800);
@@ -142,9 +112,6 @@ public class UtentiView {
         return scene;
     }
 
-    // ===============================================
-    // FORM AGGIUNTA / MODIFICA (popup)
-    // ===============================================
     private static void apriForm(Utente utente, Runnable onSave) {
 
         Stage formStage = new Stage();
@@ -164,26 +131,15 @@ public class UtentiView {
         btnSalva.getStyleClass().add("btn");
 
         btnSalva.setOnAction(e -> {
-
-            if (tfId.getText().isEmpty() ||
-                tfNome.getText().isEmpty() ||
-                tfCognome.getText().isEmpty() ||
-                tfEmail.getText().isEmpty()) {
-
+            if (tfId.getText().isEmpty() || tfNome.getText().isEmpty()
+                    || tfCognome.getText().isEmpty() || tfEmail.getText().isEmpty()) {
                 new Alert(Alert.AlertType.WARNING, "Tutti i campi sono obbligatori.", ButtonType.OK).showAndWait();
                 return;
             }
 
             if (utente == null) {
-                // Aggiungi
-                utenti.add(new Utente(
-                    tfId.getText(),
-                    tfNome.getText(),
-                    tfCognome.getText(),
-                    tfEmail.getText()
-                ));
+                utenti.add(new Utente(tfId.getText(), tfNome.getText(), tfCognome.getText(), tfEmail.getText()));
             } else {
-                // Modifica
                 utente.setId(tfId.getText());
                 utente.setNome(tfNome.getText());
                 utente.setCognome(tfCognome.getText());

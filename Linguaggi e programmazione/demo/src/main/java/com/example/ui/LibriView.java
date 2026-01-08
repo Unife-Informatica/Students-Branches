@@ -27,45 +27,40 @@ public class LibriView {
 
     private static ObservableList<Libro> libri;
 
-    @SuppressWarnings("deprecation")
     public static Scene getSceneLibri(Stage stage) {
 
         stage.setTitle("Gestione Libri");
+
         HBox navBar = MenuComponent.getMenu(stage);
 
-        // ===========================
-        // CARICA LIBRI
-        // ===========================
         libri = FXCollections.observableArrayList(DatabaseLibri.caricaLibri());
 
-        // ===========================
-        // RICERCA LIVE
-        // ===========================
         TextField cerca = new TextField();
-        cerca.setPromptText("Cerca per ISBN, Titolo, Autore, Genere");
+        cerca.setPromptText("Cerca per ISBN, titolo, autore o genere");
         cerca.getStyleClass().add("fieldCerca");
 
-        FilteredList<Libro> filteredLibri = new FilteredList<>(libri, p -> true);
+        FilteredList<Libro> filteredLibri = new FilteredList<>(libri, l -> true);
 
-        cerca.textProperty().addListener((obs, oldText, newText) -> {
-            String filtro = newText.toLowerCase().trim();
+        cerca.textProperty().addListener((obs, oldValue, newValue) -> {
+            String filtro = newValue.toLowerCase().trim();
+
             filteredLibri.setPredicate(libro -> {
-                if (filtro.isEmpty()) return true;
-                return libro.getISBN().toLowerCase().contains(filtro) ||
-                       libro.getTitolo().toLowerCase().contains(filtro) ||
-                       libro.getAutore().toLowerCase().contains(filtro) ||
-                       libro.getGenere().toLowerCase().contains(filtro);
+                if (filtro.isEmpty()) {
+                    return true;
+                }
+
+                return libro.getISBN().toLowerCase().contains(filtro)
+                        || libro.getTitolo().toLowerCase().contains(filtro)
+                        || libro.getAutore().toLowerCase().contains(filtro)
+                        || libro.getGenere().toLowerCase().contains(filtro);
             });
         });
 
         HBox barraRicerca = new HBox(cerca);
-        barraRicerca.setSpacing(10);
         HBox.setHgrow(cerca, Priority.ALWAYS);
 
-        // ===========================
-        // TABELLA
-        // ===========================
         TableView<Libro> table = new TableView<>(filteredLibri);
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         TableColumn<Libro, String> colIsbn = new TableColumn<>("ISBN");
         colIsbn.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
@@ -83,101 +78,101 @@ public class LibriView {
         colAnno.setCellValueFactory(new PropertyValueFactory<>("anno"));
 
         table.getColumns().addAll(colIsbn, colTitolo, colAutore, colGenere, colAnno);
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        // ===========================
-        // DOPPIO CLICK PER COPIA
-        // ===========================
         table.setRowFactory(tv -> {
             TableRow<Libro> row = new TableRow<>();
+
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && !row.isEmpty()) {
-                    Libro rowData = row.getItem();
-                    String testo = rowData.getISBN();
-                    Clipboard clipboard = Clipboard.getSystemClipboard();
-                    ClipboardContent content = new ClipboardContent();
-                    content.putString(testo);
-                    clipboard.setContent(content);
+                    Libro libro = row.getItem();
 
-                    new Alert(Alert.AlertType.INFORMATION, "Copia negli appunti:\n" + testo, ButtonType.OK).showAndWait();
+                    ClipboardContent content = new ClipboardContent();
+                    content.putString(libro.getISBN());
+                    Clipboard.getSystemClipboard().setContent(content);
+
+                    new Alert(
+                            Alert.AlertType.INFORMATION,
+                            "ISBN copiato negli appunti:\n" + libro.getISBN(),
+                            ButtonType.OK
+                    ).showAndWait();
                 }
             });
+
             return row;
         });
 
-        // ===========================
-        // PULSANTI
-        // ===========================
         Button btnAggiungi = new Button("Aggiungi");
-        btnAggiungi.getStyleClass().add("btn");
-
         Button btnModifica = new Button("Modifica");
-        btnModifica.getStyleClass().add("btn");
-
         Button btnRimuovi = new Button("Rimuovi");
+
+        btnAggiungi.getStyleClass().add("btn");
+        btnModifica.getStyleClass().add("btn");
         btnRimuovi.getStyleClass().add("btn");
 
-        HBox hbAzioni = new HBox(10, btnAggiungi, btnModifica, btnRimuovi);
+        HBox boxAzioni = new HBox(10, btnAggiungi, btnModifica, btnRimuovi);
 
-        // ===========================
-        // LOGICA RIMOZIONE
-        // ===========================
         btnRimuovi.setOnAction(e -> {
             Libro selezionato = table.getSelectionModel().getSelectedItem();
-            if (selezionato != null) {
-                libri.remove(selezionato);
-                DatabaseLibri.salvaLibri(libri);
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Seleziona un libro da rimuovere!", ButtonType.OK).showAndWait();
+
+            if (selezionato == null) {
+                new Alert(
+                        Alert.AlertType.WARNING,
+                        "Seleziona un libro da rimuovere",
+                        ButtonType.OK
+                ).showAndWait();
+                return;
             }
+
+            libri.remove(selezionato);
+            DatabaseLibri.salvaLibri(libri);
         });
 
-        // ===========================
-        // FUNZIONE GENERICA PER FORM (AGGIUNGI / MODIFICA)
-        // ===========================
-        Runnable aggiornaTabella = () -> {
+        Runnable aggiorna = () -> {
             table.refresh();
             DatabaseLibri.salvaLibri(libri);
         };
 
-        // FORM AGGIUNGI
-        btnAggiungi.setOnAction(e -> apriForm(null, aggiornaTabella));
+        btnAggiungi.setOnAction(e -> apriForm(null, aggiorna));
 
-        // FORM MODIFICA
         btnModifica.setOnAction(e -> {
             Libro selezionato = table.getSelectionModel().getSelectedItem();
-            if (selezionato != null) {
-                apriForm(selezionato, aggiornaTabella);
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Seleziona un libro da modificare!", ButtonType.OK).showAndWait();
+
+            if (selezionato == null) {
+                new Alert(
+                        Alert.AlertType.WARNING,
+                        "Seleziona un libro da modificare",
+                        ButtonType.OK
+                ).showAndWait();
+                return;
             }
+
+            apriForm(selezionato, aggiorna);
         });
 
-        // ===========================
-        // LAYOUT FINALE
-        // ===========================
-        VBox root = new VBox(10, navBar, barraRicerca, table, hbAzioni);
+        VBox root = new VBox(10, navBar, barraRicerca, table, boxAzioni);
         root.setPadding(new Insets(10));
 
         Scene scene = new Scene(root, 1200, 800);
-        scene.getStylesheets().add(LibriView.class.getResource("/style.css").toExternalForm());
-        stage.setScene(scene);
+        scene.getStylesheets().add(
+                LibriView.class.getResource("/style.css").toExternalForm()
+        );
 
+        stage.setScene(scene);
         return scene;
     }
 
-    // ===============================================
-    // FORM UNICO PER AGGIUNGERE / MODIFICARE
-    // ===============================================
     private static void apriForm(Libro libro, Runnable onSave) {
-        Stage formStage = new Stage();
-        formStage.setTitle(libro == null ? "Aggiungi Libro" : "Modifica Libro");
+
+        Stage stage = new Stage();
+        stage.setTitle(libro == null ? "Aggiungi libro" : "Modifica libro");
 
         TextField tfIsbn = new TextField(libro == null ? "" : libro.getISBN());
         TextField tfTitolo = new TextField(libro == null ? "" : libro.getTitolo());
         TextField tfAutore = new TextField(libro == null ? "" : libro.getAutore());
         TextField tfGenere = new TextField(libro == null ? "" : libro.getGenere());
-        TextField tfAnno = new TextField(libro == null ? "" : String.valueOf(libro.getAnno()));
+        TextField tfAnno = new TextField(
+                libro == null ? "" : String.valueOf(libro.getAnno())
+        );
 
         tfIsbn.setPromptText("ISBN");
         tfTitolo.setPromptText("Titolo");
@@ -193,17 +188,14 @@ public class LibriView {
                 int anno = Integer.parseInt(tfAnno.getText());
 
                 if (libro == null) {
-                    // Aggiungi nuovo
-                    Libro nuovo = new Libro(
-                        tfIsbn.getText(),
-                        tfTitolo.getText(),
-                        tfAutore.getText(),
-                        tfGenere.getText(),
-                        anno
-                    );
-                    libri.add(nuovo);
+                    libri.add(new Libro(
+                            tfIsbn.getText(),
+                            tfTitolo.getText(),
+                            tfAutore.getText(),
+                            tfGenere.getText(),
+                            anno
+                    ));
                 } else {
-                    // Modifica esistente
                     libro.setISBN(tfIsbn.getText());
                     libro.setTitolo(tfTitolo.getText());
                     libro.setAutore(tfAutore.getText());
@@ -212,19 +204,28 @@ public class LibriView {
                 }
 
                 onSave.run();
-                formStage.close();
+                stage.close();
 
             } catch (NumberFormatException ex) {
-                new Alert(Alert.AlertType.ERROR, "Anno non valido!", ButtonType.OK).showAndWait();
+                new Alert(
+                        Alert.AlertType.ERROR,
+                        "Inserisci un anno valido",
+                        ButtonType.OK
+                ).showAndWait();
             }
         });
 
-        VBox form = new VBox(10, tfIsbn, tfTitolo, tfAutore, tfGenere, tfAnno, btnSalva);
+        VBox form = new VBox(10,
+                tfIsbn, tfTitolo, tfAutore, tfGenere, tfAnno, btnSalva
+        );
         form.setPadding(new Insets(15));
 
-        Scene sceneForm = new Scene(form, 400, 360);
-        sceneForm.getStylesheets().add(LibriView.class.getResource("/style.css").toExternalForm());
-        formStage.setScene(sceneForm);
-        formStage.show();
+        Scene scene = new Scene(form, 400, 350);
+        scene.getStylesheets().add(
+                LibriView.class.getResource("/style.css").toExternalForm()
+        );
+
+        stage.setScene(scene);
+        stage.show();
     }
 }

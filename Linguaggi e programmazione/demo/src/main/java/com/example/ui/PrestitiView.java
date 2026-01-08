@@ -38,17 +38,13 @@ public class PrestitiView {
     private static ObservableList<Prestito> prestiti;
 
     public static Scene getScenePrestiti(Stage stage) {
+
         stage.setTitle("Gestione Prestiti");
+
         HBox navBar = MenuComponent.getMenu(stage);
 
-        // ============================
-        // CARICA PRESTITI
-        // ============================
         prestiti = FXCollections.observableArrayList(DatabasePrestito.caricaPrestiti());
 
-        // ============================
-        // RICERCA LIVE
-        // ============================
         TextField cerca = new TextField();
         cerca.setPromptText("Cerca per ISBN o Nome Utente");
         cerca.getStyleClass().add("fieldCerca");
@@ -57,20 +53,14 @@ public class PrestitiView {
 
         cerca.textProperty().addListener((obs, old, neu) -> {
             String filtro = neu.toLowerCase().trim();
-            filtered.setPredicate(p -> {
-                if (filtro.isEmpty()) return true;
-                return p.getISBN().toLowerCase().contains(filtro)
-                        || p.getUtente().getNome().toLowerCase().contains(filtro);
-            });
+            filtered.setPredicate(p -> filtro.isEmpty() 
+                    || p.getISBN().toLowerCase().contains(filtro) 
+                    || p.getUtente().getNome().toLowerCase().contains(filtro));
         });
 
         HBox barraRicerca = new HBox(cerca);
-        barraRicerca.setSpacing(10);
         HBox.setHgrow(cerca, Priority.ALWAYS);
 
-        // ============================
-        // TABELLA PRESTITI
-        // ============================
         TableView<Prestito> table = new TableView<>(filtered);
 
         TableColumn<Prestito, String> colISBN = new TableColumn<>("ISBN");
@@ -78,7 +68,9 @@ public class PrestitiView {
 
         TableColumn<Prestito, String> colUtente = new TableColumn<>("Utente");
         colUtente.setCellValueFactory(c ->
-                new javafx.beans.property.SimpleStringProperty(c.getValue().getUtente().getNome() + " " + c.getValue().getUtente().getCognome())
+                new javafx.beans.property.SimpleStringProperty(
+                        c.getValue().getUtente().getNome() + " " + c.getValue().getUtente().getCognome()
+                )
         );
 
         TableColumn<Prestito, Date> colDataI = new TableColumn<>("Inizio Prestito");
@@ -93,58 +85,43 @@ public class PrestitiView {
         table.getColumns().addAll(colISBN, colUtente, colDataI, colDataF, colAttivo);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        // ============================
-        // COLORAZIONE RIGHE MODERNA
-        // ============================
         table.setRowFactory(tv -> new TableRow<>() {
             @Override
             protected void updateItem(Prestito item, boolean empty) {
                 super.updateItem(item, empty);
                 getStyleClass().removeAll("table-row-attivo", "table-row-chiuso");
-
-                if (item == null || empty) {
-                    setStyle("");
-                } else if (!item.isAttivo()) {
-                    getStyleClass().add("table-row-chiuso");
+                if (item != null && !empty) {
+                    getStyleClass().add(item.isAttivo() ? "table-row-attivo" : "table-row-chiuso");
                 } else {
-                    getStyleClass().add("table-row-attivo");
+                    setStyle("");
                 }
             }
         });
 
-        // ============================
-        // DOPPIO CLICK PER COPIARE
-        // ============================
         table.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
                 Prestito p = table.getSelectionModel().getSelectedItem();
                 if (p != null) {
                     ClipboardContent content = new ClipboardContent();
-                    content.putString("ISBN: " + p.getISBN() + ", Utente: " + p.getUtente().getNome() + " " + p.getUtente().getCognome());
+                    content.putString("ISBN: " + p.getISBN() + ", Utente: " 
+                            + p.getUtente().getNome() + " " + p.getUtente().getCognome());
                     Clipboard.getSystemClipboard().setContent(content);
                     new Alert(Alert.AlertType.INFORMATION, "Prestito copiato negli appunti!", ButtonType.OK).showAndWait();
                 }
             }
         });
 
-        // ============================
-        // PULSANTI
-        // ============================
         Button btnAggiungi = new Button("Nuovo Prestito");
-        btnAggiungi.getStyleClass().add("btn");
-
         Button btnRestituisci = new Button("Restituisci");
-        btnRestituisci.getStyleClass().add("btn");
-
         Button btnRimuovi = new Button("Rimuovi");
+
+        btnAggiungi.getStyleClass().add("btn");
+        btnRestituisci.getStyleClass().add("btn");
         btnRimuovi.getStyleClass().add("btn");
 
         HBox hbAzioni = new HBox(10, btnAggiungi, btnRestituisci, btnRimuovi);
         hbAzioni.setPadding(new Insets(10, 0, 0, 0));
 
-        // ============================
-        // LOGICA: RIMOZIONE
-        // ============================
         btnRimuovi.setOnAction(e -> {
             Prestito p = table.getSelectionModel().getSelectedItem();
             if (p != null) {
@@ -155,9 +132,6 @@ public class PrestitiView {
             }
         });
 
-        // ============================
-        // LOGICA: RESTITUZIONE
-        // ============================
         btnRestituisci.setOnAction(e -> {
             Prestito p = table.getSelectionModel().getSelectedItem();
             if (p != null) {
@@ -165,8 +139,7 @@ public class PrestitiView {
                     new Alert(Alert.AlertType.INFORMATION, "Questo prestito è già chiuso!", ButtonType.OK).showAndWait();
                     return;
                 }
-                Alert conferma = new Alert(Alert.AlertType.CONFIRMATION,
-                        "Confermi la restituzione del libro?", ButtonType.YES, ButtonType.NO);
+                Alert conferma = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la restituzione del libro?", ButtonType.YES, ButtonType.NO);
                 conferma.showAndWait();
                 if (conferma.getResult() == ButtonType.YES) {
                     p.setAttivo(false);
@@ -178,14 +151,8 @@ public class PrestitiView {
             }
         });
 
-        // ============================
-        // AGGIUNGI PRESTITO
-        // ============================
         btnAggiungi.setOnAction(e -> apriFormPrestito(table));
 
-        // ============================
-        // LAYOUT FINALE
-        // ============================
         VBox root = new VBox(10, navBar, barraRicerca, table, hbAzioni);
         root.setPadding(new Insets(15));
 
@@ -212,7 +179,8 @@ public class PrestitiView {
         lvLibri.setItems(filteredLibri);
         tfLibro.textProperty().addListener((obs, oldVal, newVal) -> {
             String filtro = newVal.toLowerCase().trim();
-            filteredLibri.setPredicate(l -> l.getTitolo().toLowerCase().contains(filtro) || l.getISBN().toLowerCase().contains(filtro));
+            filteredLibri.setPredicate(l -> l.getTitolo().toLowerCase().contains(filtro) 
+                    || l.getISBN().toLowerCase().contains(filtro));
         });
 
         TextField tfUtente = new TextField();
@@ -224,7 +192,8 @@ public class PrestitiView {
         lvUtenti.setItems(filteredUtenti);
         tfUtente.textProperty().addListener((obs, oldVal, newVal) -> {
             String filtro = newVal.toLowerCase().trim();
-            filteredUtenti.setPredicate(u -> u.getNome().toLowerCase().contains(filtro) || u.getCognome().toLowerCase().contains(filtro));
+            filteredUtenti.setPredicate(u -> u.getNome().toLowerCase().contains(filtro) 
+                    || u.getCognome().toLowerCase().contains(filtro));
         });
 
         DatePicker dpInizio = new DatePicker(LocalDate.now());

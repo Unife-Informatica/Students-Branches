@@ -19,9 +19,12 @@ public class Prestito {
     private Date dataFinePrevista;
 
     @JsonProperty("attivo")
-    private boolean attivo = true; // serve per filtrare prestiti attivi
+    private boolean attivo;
 
-    public Prestito() {/* costruttore vuoto */};
+    // Costruttore vuoto
+    public Prestito() {
+        this.attivo = true;
+    }
 
     public Prestito(String ISBN, Utente utente, Date dataInizio, Date dataFinePrevista) {
         this.ISBN = ISBN;
@@ -35,8 +38,8 @@ public class Prestito {
         return ISBN;
     }
 
-    public void setISBN(String iSBN) {
-        ISBN = iSBN;
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
     public Utente getUtente() {
@@ -70,6 +73,4 @@ public class Prestito {
     public void setAttivo(boolean attivo) {
         this.attivo = attivo;
     }
-
-    
 }

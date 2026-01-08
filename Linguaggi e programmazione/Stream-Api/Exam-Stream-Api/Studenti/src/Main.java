@@ -5,6 +5,12 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
 
+        // ===============================
+        // CREAZIONE LISTA STUDENTI
+        // ===============================
+        // Creo una lista di studenti con informazioni anagrafiche,
+        // accademiche e temporali che verranno utilizzate
+        // per esercizi sulle Stream API.
         List<Student> students = Arrays.asList(
             new Student("Luca", "Informatica", 1, 27.5, 30, false,
                         LocalDate.of(2023, 9, 20), LocalDate.of(2024, 2, 10)),
@@ -36,30 +42,82 @@ public class Main {
                         LocalDate.of(2021, 9, 20), LocalDate.of(2024, 1, 27))
         );
 
-        //Raggruppa gli studenti per corso e stampa
+        // ===============================
+        // RAGGRUPPAMENTO PER CORSO
+        // ===============================
+        // Raggruppo gli studenti per corso di laurea.
+        // Per ogni corso stampo:
+        // - numero di studenti
+        // - media dei voti
+        // - media dei CFU
         System.out.println("Studenti per corso");
-        Map<String,List<Student>> studentiPerCorso = students.stream()
-        .collect(Collectors.groupingBy(Student::getCourse));
-        studentiPerCorso.forEach((corso,libri)->{
-            System.out.println(corso+"->"+libri.stream().count()+" "+libri.stream().collect(Collectors.averagingDouble(n->n.getAverageGrade()))+" "+libri.stream().collect(Collectors.averagingLong(n->n.getCredits()))+"\n");
+
+        Map<String, List<Student>> studentiPerCorso =
+                students.stream()
+                        .collect(Collectors.groupingBy(Student::getCourse));
+
+        studentiPerCorso.forEach((corso, listaStudenti) -> {
+            System.out.println(
+                corso + " -> " +
+                listaStudenti.stream().count() + " studenti, " +
+                "media voti: " +
+                listaStudenti.stream()
+                        .collect(Collectors.averagingDouble(Student::getAverageGrade)) + ", " +
+                "media CFU: " +
+                listaStudenti.stream()
+                        .collect(Collectors.averagingLong(Student::getCredits))
+            );
+            System.out.println();
         });
 
-        //Separa i lavoratori (true) dai non lavoratori (false)
-        Map<Boolean,List<String>> lavoratori = students.stream().collect(Collectors.partitioningBy(Student::isWorkingStudent,Collectors.mapping(Student::getName,Collectors.toList())));
-        lavoratori.forEach((bol,nome)->{
-            System.out.println(bol+"->"+nome+"\n");
+        // ===============================
+        // PARTIZIONAMENTO LAVORATORI / NON LAVORATORI
+        // ===============================
+        // Divido gli studenti in due gruppi in base al fatto
+        // che siano lavoratori o meno.
+        // Uso partitioningBy perché la condizione è booleana.
+        Map<Boolean, List<String>> lavoratori =
+                students.stream()
+                        .collect(Collectors.partitioningBy(
+                                Student::isWorkingStudent,
+                                Collectors.mapping(Student::getName, Collectors.toList())
+                        ));
+
+        lavoratori.forEach((isWorker, nomi) -> {
+            System.out.println(isWorker + " -> " + nomi);
+            System.out.println();
         });
 
-        //Trova lo studente con più CFU
-        Student maxCfu = students.stream().max(Comparator.comparingLong(Student::getCredits)).orElseThrow();
-        System.out.println(maxCfu.getName()+"->"+maxCfu.getCredits()+"\n");
+        // ===============================
+        // STUDENTE CON PIÙ CFU
+        // ===============================
+        // Trovo lo studente che ha accumulato il maggior numero di CFU.
+        Student maxCfu =
+                students.stream()
+                        .max(Comparator.comparingLong(Student::getCredits))
+                        .orElseThrow();
 
-        //Per ogni corso, trova lo studente più recente
-        Map<String,Optional<Student>> studenteRecenteCorso = students.stream().collect(Collectors.groupingBy(Student::getCourse,Collectors.maxBy(Comparator.comparing(Student::getEnrollmentDate))));
+        System.out.println(maxCfu.getName() + " -> " + maxCfu.getCredits());
+        System.out.println();
 
-        studenteRecenteCorso.forEach((corso,studente)->{
-            studente.stream().forEach(n->System.out.println(corso+"->"+n.getName()));
+        // ===============================
+        // STUDENTE PIÙ RECENTE PER CORSO
+        // ===============================
+        // Per ogni corso individuo lo studente con la data
+        // di iscrizione più recente.
+        Map<String, Optional<Student>> studenteRecenteCorso =
+                students.stream()
+                        .collect(Collectors.groupingBy(
+                                Student::getCourse,
+                                Collectors.maxBy(
+                                        Comparator.comparing(Student::getEnrollmentDate)
+                                )
+                        ));
+
+        studenteRecenteCorso.forEach((corso, optStudente) -> {
+            optStudente.ifPresent(studente ->
+                    System.out.println(corso + " -> " + studente.getName())
+            );
         });
-
     }
 }

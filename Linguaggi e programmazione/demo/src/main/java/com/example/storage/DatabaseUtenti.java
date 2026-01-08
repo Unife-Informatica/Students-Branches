@@ -11,23 +11,35 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class DatabaseUtenti {
-    private static final String UTENTI_FILE = "utenti.json";
-    private static ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+
+    private static final String FILE_PATH = "utenti.json";
+    private static final ObjectMapper mapper =
+            new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+
     @SuppressWarnings("CallToPrintStackTrace")
-    public static List<Utente> caricaUtenti(){
-        File file = new File(UTENTI_FILE);
-        if(!file.exists()) return new ArrayList<>();
+    public static List<Utente> caricaUtenti() {
+        File file = new File(FILE_PATH);
+
+        if (!file.exists()) {
+            return new ArrayList<>();
+        }
+
         try {
-            return mapper.readValue(file, new TypeReference<List<Utente>>(){});
+            return mapper.readValue(
+                    file,
+                    new TypeReference<List<Utente>>() {
+                    }
+            );
         } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();
         }
     }
+
     @SuppressWarnings("CallToPrintStackTrace")
-    public static void salvaUtenti(List<Utente> utenti){
+    public static void salvaUtenti(List<Utente> utenti) {
         try {
-            mapper.writeValue(new File(UTENTI_FILE),utenti);
+            mapper.writeValue(new File(FILE_PATH), utenti);
         } catch (IOException e) {
             e.printStackTrace();
         }
