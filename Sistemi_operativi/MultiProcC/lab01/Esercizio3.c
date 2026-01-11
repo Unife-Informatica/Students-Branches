@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
 
   while(strcmp(nome, "fine") != 0){
     // Per controllare se il file esiste, provo ad aprirlo
-    if((fd = open(nome, O_RDONLY))){
+    if((fd = open(nome, O_RDONLY)) < 0){
       /* La open potrebbe fallire anche se il file esiste,
          ad esempio nel caso manchino i permessi di lettura.
          Per gestire la differenza, possiamo guardare il valore di errno. */

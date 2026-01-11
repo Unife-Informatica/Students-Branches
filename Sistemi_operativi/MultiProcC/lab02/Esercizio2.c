@@ -32,7 +32,7 @@ void sigintparenthandler(int sig){
   printf("Ricevuto CTRL-C --> Attendo sincronizzazione con i children...\n");
   int status;
   for(int i = 0; i < nChildren; i++){
-    wiat(&status);
+    wait(&status);
   }
   printf("Tutti i children terminati, chiudo il programma\n");
   flagTerminato = true;
@@ -68,7 +68,7 @@ int main(int argc, char *argv[]){
       sigemptyset(&sigint.sa_mask);
       sigint.sa_flags = 0;
       sigint.sa_handler = sigintchild;
-      if(sigation(SIGINT, &sigint, NULL) == -1){
+      if(sigaction(SIGINT, &sigint, NULL) == -1){
         perror("Errore  nell'installazione del gestore di SIGINT\n");
         exit(-11);
       }
