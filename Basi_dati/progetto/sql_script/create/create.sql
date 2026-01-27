@@ -1,3 +1,4 @@
+-- Tabella CLIENTE: memorizza i dati anagrafici dei clienti della discoteca
 CREATE TABLE CLIENTE (
   ID_Cliente INT AUTO_INCREMENT PRIMARY KEY,
   Nome VARCHAR(50) NOT NULL,
@@ -7,6 +8,7 @@ CREATE TABLE CLIENTE (
   Telefono VARCHAR(20)
 );
 
+-- Tabella EVENTO: contiene le informazioni relative agli eventi organizzati dalla discoteca
 CREATE TABLE EVENTO (
   ID_Evento INT AUTO_INCREMENT PRIMARY KEY,
   NomeEvento VARCHAR(100) NOT NULL,
@@ -17,6 +19,7 @@ CREATE TABLE EVENTO (
   CapienzaMassima INT NOT NULL CHECK (CapienzaMassima > 0)
 );
 
+-- Tabella BIGLIETTO: rappresenta la vendita dei biglietti e collega clienti ed eventi
 CREATE TABLE BIGLIETTO (
   ID_Biglietto INT AUTO_INCREMENT PRIMARY KEY,
   DataAcquisto DATE NOT NULL,
