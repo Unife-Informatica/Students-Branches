@@ -1,0 +1,18 @@
+
+public class Accumulatore{
+    private double accumulatore;
+    public Accumulatore(double value){
+        accumulatore=value;
+    }
+    public void addValue(double value){
+        double tmp = accumulatore;
+        tmp+=value;
+        try{
+            Thread.sleep(200);
+        }catch(InterruptedException ie){/* nessuna azione */}
+        accumulatore=tmp;
+    }
+    public double getValue(){
+        return accumulatore;
+    }
+}
