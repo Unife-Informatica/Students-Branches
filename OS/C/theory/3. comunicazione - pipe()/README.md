@@ -1,4 +1,5 @@
-# File descriptor
+# Comunicazione - `pipe()`
+
 è un numero intero che identifica in modo univoco un file aperto all'interno di un processo.
 
 ## Come funziona

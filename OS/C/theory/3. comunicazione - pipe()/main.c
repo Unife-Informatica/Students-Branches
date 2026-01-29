@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /*
  * 1. Il padre crea una pipe.
@@ -18,6 +19,11 @@ int main() {
   pipe(fd); // crea la pipe
 
   pid = fork(); // crea un processo figlio
+
+  if(pid < 0) {
+      perror("fork");
+      exit(1);
+  }
 
   if (pid == 0) {
     // Processo figlio
