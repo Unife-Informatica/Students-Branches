@@ -8,8 +8,8 @@ public class WorkerThreadMetodo2 implements Runnable {
   // to prevent conflicts in setting and checking the variable from different
   // threads
   // https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicBoolean.html
-  private final AtomicBoolean running = new AtomicBoolean(false);
 
+  private final AtomicBoolean running = new AtomicBoolean(false);
   private int i;
 
   public WorkerThreadMetodo2(int i) {
@@ -33,5 +33,4 @@ public class WorkerThreadMetodo2 implements Runnable {
       }
     }
   }
-
 }

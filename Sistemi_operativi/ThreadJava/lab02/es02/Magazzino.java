@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Magazzino {
-
   private Map<String, Integer> oggetti = null;
 
   public Magazzino() {
@@ -57,5 +56,4 @@ public class Magazzino {
     }
     return result;
   }
-
 }

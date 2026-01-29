@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Esercizio1Metodo2 {
-
-  @SuppressWarnings("CallToPrintStackTrace")
   public static void main(String args[]) {
     System.out.println("Esercizio1Metodo2");
 
@@ -74,5 +72,4 @@ public class Esercizio1Metodo2 {
     }
     return runningElements;
   }
-
 }

@@ -63,5 +63,4 @@ public class Esercizio1Metodo1 {
     }
     return runningElements;
   }
-
 }

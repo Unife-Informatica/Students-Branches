@@ -1,7 +1,6 @@
 package es02;
 
 public class Operatore extends Thread {
-
   private Magazzino mag = null;
 
   public Operatore(Magazzino mag) {
@@ -10,7 +9,6 @@ public class Operatore extends Thread {
 
   @Override
   public void run() {
-
     boolean exist = mag.verificaOggetto("bulloni");
     if (!exist) {
       System.out.println(Thread.currentThread().threadId() + ": in magazzino non esiste l'oggetto bulloni, lo creo");
@@ -28,7 +26,5 @@ public class Operatore extends Thread {
 
     System.out.println(Thread.currentThread().threadId() + ": rimuovo 500 pezzi di bulloni");
     mag.increaseQuantity("bulloni", -500);
-
   }
-
 }
