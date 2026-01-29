@@ -25,12 +25,11 @@ public class Esercizio1Metodo2 {
     // WorketThreadMetodo2 implements Runnable
     WorkerThreadMetodo2 wt[] = new WorkerThreadMetodo2[n];
     boolean running[] = new boolean[n];
-    Thread t[] = new Thread[n];
 
     for (int i = 0; i < n; i++) {
       wt[i] = new WorkerThreadMetodo2(i);
-      t[i] = new Thread(wt[i]);
-      t[i].start();
+      Thread t = new Thread(wt[i]);
+      t.start();
       running[i] = true;
     }
 
@@ -41,15 +40,7 @@ public class Esercizio1Metodo2 {
         int id = Integer.parseInt(br.readLine());
         if (id >= 0 && id < n) {
           if (running[id] == true) {
-            wt[id].stop();
-
-            // https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#interrupt--
-            // [...] If this thread is blocked in an invocation of the wait(), [...]
-            // or of the join(), join(long), join(long, int), sleep(long), [...]
-            // then its interrupt status will be cleared and it will receive an
-            // InterruptedException.
-            t[id].interrupt();
-
+            wt[id].interrupt();
             running[id] = false;
           }
         }

@@ -1,7 +1,7 @@
 package es02;
 
 public class Esercizio2 {
-
+  
   final static int N = 5;
 
   public static void main(String[] args) {

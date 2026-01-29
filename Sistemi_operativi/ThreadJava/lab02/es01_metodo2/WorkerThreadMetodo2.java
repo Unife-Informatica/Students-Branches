@@ -21,6 +21,11 @@ public class WorkerThreadMetodo2 implements Runnable {
     running.set(false);
   }
 
+  public void interrupt(){
+    running.set(false);
+    Thread.currentThread().interrupt();
+  }
+
   @Override
   public void run() {
     running.set(true);
