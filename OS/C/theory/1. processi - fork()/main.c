@@ -46,7 +46,7 @@ int main() {
     printf("[Genitore]: pid = %d, pid del mio genitore = %d\n", getpid(), getppid());
     printf("[Genitore]: mio figlio ha pid = %d\n", pid);
 
-    printf("a = %d", a); // Output = 5
+    printf("a = %d", a); // Output = 5 perché la memoria non è condivisa
   }
 
   // aspetta che il figlio finisca l'esecuzione
