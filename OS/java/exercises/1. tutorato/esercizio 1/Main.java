@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 // --- 1. CLASSE ACCUMULATORE ---
 // Questa è la classe che detiene il dato condiviso (il totale).
 class Accumulatore {
+
     private double contatore;
 
     // Costruttore: inizializza il contatore con un valore di partenza
@@ -29,6 +29,7 @@ class Accumulatore {
 // --- 2. MODO A: IMPLEMENTARE RUNNABLE (Consigliato) ---
 // Definiamo un compito che accetta l'accumulatore e vi aggiunge un numero.
 class CounterRunnable implements Runnable {
+
     private Accumulatore accumulatore;
 
     // Costruttore: dobbiamo passare il riferimento all'accumulatore condiviso
@@ -39,16 +40,19 @@ class CounterRunnable implements Runnable {
     @Override
     public void run() {
         // Generiamo un numero casuale
-        double randomValue = Math.random(); 
-        
+        double randomValue = Math.random();
+
         // Lo aggiungiamo all'accumulatore
-        System.out.println("Thread (Runnable) aggiunge: " + String.format("%.2f", randomValue));
+        System.out.println(
+            "Thread (Runnable) aggiunge: " + String.format("%.2f", randomValue)
+        );
         accumulatore.addValue(randomValue);
     }
 }
 
 // --- 3. CLASSE MAIN ---
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -94,8 +98,10 @@ public class Main {
 
         // 5. Stampa finale
         System.out.println("--- Tutti i thread hanno finito ---");
-        System.out.println("Valore finale nell'accumulatore: " + acc.getValue());
-        
+        System.out.println(
+            "Valore finale nell'accumulatore: " + acc.getValue()
+        );
+
         scanner.close();
     }
 }
