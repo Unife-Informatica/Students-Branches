@@ -13,31 +13,31 @@ public class Main {
       e.printStackTrace();
     }
 
-    InputUtente inp = new InputUtente(pos);
-    Thread tInp = new Thread(inp);
-    tInp.start();
+    InputUtente in = new InputUtente(pos);
+    Thread tIn = new Thread(in);
+    tIn.start();
 
     VerificaInput vf = new VerificaInput();
 
-    ScansionaInput sInp = new ScansionaInput(pis, vf);
-    Thread tSinp = new Thread();
-    tSinp.start();
+    ScansionaInput sc = new ScansionaInput(pis, vf);
+    Thread tSc =  new Thread(sc);
+    tSc.start();
 
     while(true){
-      try{
-        Thread.currentThread().sleep(200);
-        if(vf.getStringheSosp() > 3){
-          System.out.println("Rilevate > 3 stringhe sospette, termino...");
-          inp.termina();
-          sInp.termina();
+      if(vf.getSospette() > 3){
+        System.out.println("Stringhe sosptette > 3, termina...");
+        in.termina();
+        sc.termina();
 
-          tInp.join();
-          tSinp.join();
-          break;
-        }
-      }catch(InterruptedException e){
-        e.printStackTrace();
+        break;
       }
+    }
+
+    try{
+      tIn.join();
+      tSc.join();
+    }catch(InterruptedException e){
+      e.printStackTrace();
     }
   }
 }

@@ -11,7 +11,7 @@ public class InputUtente implements Runnable{
   private AtomicBoolean isRunning = new AtomicBoolean(false);
 
   public InputUtente(PipedOutputStream pos){
-    this.pos = pos;
+   this.pos = pos;
   }
 
   public void run(){
@@ -21,11 +21,11 @@ public class InputUtente implements Runnable{
 
     while(isRunning.get()){
       System.out.println("Inserisci una stringa: ");
-      
+      String s = null;
       try{
-        String s = br.readLine();
+        s = br.readLine();
         bw.write(s);
-        bw.newLine();;
+        bw.newLine();
         bw.flush();
       }catch(IOException e){
         e.printStackTrace();

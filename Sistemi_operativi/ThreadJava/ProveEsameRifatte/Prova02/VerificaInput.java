@@ -1,11 +1,11 @@
 public class VerificaInput {
-  private int stringheSospette = 0;
+  private int sospette = 0;
 
-  public synchronized void incStringheSosp(){
-    this.stringheSospette++;
+  public synchronized void incSospette(){
+    this.sospette++;
   }
 
-  public synchronized int getStringheSosp(){
-    return this.stringheSospette;
+  public synchronized int getSospette(){
+    return this.sospette;
   }
 }

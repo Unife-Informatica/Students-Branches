@@ -16,21 +16,21 @@ public class ScansionaInput implements Runnable{
 
   public void run(){
     isRunning.set(true);
+
     BufferedReader br = new BufferedReader(new InputStreamReader(pis));
+    String s = null;
 
     while(isRunning.get()){
-      String line = null;
       try{
-        line = br.readLine();
+        s = br.readLine();
+        if(s.equals("1234") || s.equals("abcde")){
+          System.out.println("Stringa sospetta: " + s);
+          vf.incSospette();
+        }else{
+          System.out.println("OK");
+        }
       }catch(IOException e){
         e.printStackTrace();
-      }
-
-      if(line.equals("abcde") || line.equals("1234")){
-        System.out.println("Pericolo");
-        vf.incStringheSosp();
-      }else{
-        System.out.println("OK");
       }
     }
   }
