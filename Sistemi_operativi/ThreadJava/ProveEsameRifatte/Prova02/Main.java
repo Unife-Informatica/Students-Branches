@@ -24,12 +24,17 @@ public class Main {
     tSc.start();
 
     while(true){
-      if(vf.getSospette() > 3){
-        System.out.println("Stringhe sosptette > 3, termina...");
-        in.termina();
-        sc.termina();
+      try{
+        Thread.sleep(200);
+        if(vf.getSospette() > 3){
+          System.out.println("Stringhe sosptette > 3, termina...");
+          in.termina();
+          sc.termina();
 
-        break;
+          break;
+        }
+      }catch(InterruptedException e){
+        e.printStackTrace();
       }
     }
 
