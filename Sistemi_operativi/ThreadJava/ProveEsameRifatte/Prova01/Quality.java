@@ -15,7 +15,6 @@ public class Quality extends Thread{
 
   public void run(){
     isRunning.set(true);
-
     ObjectInputStream ois = null;
 
     try{
@@ -27,14 +26,12 @@ public class Quality extends Thread{
     while(isRunning.get()){
       try{
         Message m = (Message)ois.readObject();
-        float valCasuale = m.getValCasuale();
-
-        if(valCasuale > 0){
+        if(m.getValCasuale() < 0){
+          System.out.println("Errore, valore negativo: " + m.getContProd());
+          overall.incDifetti();
+        }else{
           System.out.println("OK");
           overall.incCorretti();
-        }else{
-          System.out.println("Errore, per pezzo numero " + m.getNProdotti());
-          overall.incDifetti();
         }
       }catch(IOException | ClassNotFoundException e){
         e.printStackTrace();

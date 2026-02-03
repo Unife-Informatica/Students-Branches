@@ -13,31 +13,29 @@ public class Main {
       e.printStackTrace();
     }
 
+    Machine m = new Machine(pos);
+    m.start();
+
     Overall overall = new Overall();
 
-    Machine m = new Machine(pos);
     Quality q = new Quality(pis, overall);
-
-    m.start();
     q.start();
 
-    boolean continua = true;
-
-    while(continua){
+    while(true){
       try{
         Thread.currentThread().sleep(1000);
         if(overall.getDifetti() > overall.getCorretti()){
-          System.out.println("Oggetti difettosi > corretti");
+          System.out.println("Difetti > Corretti, termina...");
           m.termina();
           q.termina();
 
-          continua = false;
+          break;
         }
       }catch(InterruptedException e){
         e.printStackTrace();
       }
     }
-    
+
     try{
       m.join();
       q.join();

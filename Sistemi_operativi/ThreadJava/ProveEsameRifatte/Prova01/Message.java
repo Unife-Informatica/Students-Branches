@@ -1,19 +1,19 @@
 import java.io.Serializable;
 
 public class Message implements Serializable{
-  private int nProdotti = 0;
+  private int contProd = 0;
   private float valCasuale = 0.0F;
 
-  public Message(int nProdotti, float valCasuale){
-    this.nProdotti = nProdotti;
+  public Message(int contProd, float valCasuale){
+    this.contProd = contProd;
     this.valCasuale = valCasuale;
   }
 
-  public int getNProdotti(){
-    return nProdotti;
+  public int getContProd() {
+    return contProd;
   }
 
-  public float getValCasuale(){
+  public float getValCasuale() {
     return valCasuale;
   }
 }
