@@ -36,14 +36,40 @@ public class Main {
       e.printStackTrace();
     }
 
-    while(true){
+    int count = 0;
+
+    for(int i = 0; i <= 10; i++){
       try{
         r = (Rilevazione)ois.readObject();
       }catch(IOException | ClassNotFoundException e){
         e.printStackTrace();
       }
 
-      
+      if(r.getValore() <= 50){
+        System.out.println("Basso");
+      }else if(r.getValore() > 50 && r.getValore() < 100){
+        System.out.println("Moderato");
+      }else if(r.getValore() > 100){
+        System.out.println("Alto");
+      }
+
+      if(r.getValore() > sogliaCritica){
+        count++;
+      }else{
+        count = 0;
+      }
+
+      if(count == 3){
+        System.out.println("Warning, superate 3 volte la soglia critica");
+      }
+    }
+
+    g.termina();
+
+    try{
+      g.join();
+    }catch(InterruptedException e){
+      e.printStackTrace();
     }
   }
 }
