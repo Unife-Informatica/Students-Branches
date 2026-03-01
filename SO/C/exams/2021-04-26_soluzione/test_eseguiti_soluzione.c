@@ -1,10 +1,10 @@
-#include <stdio.h>
 #include <signal.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
 #include <fcntl.h>
+#include <sys/wait.h>
+#include <string.h>
+#include <stdlib.h>
 #include <unistd.h>
-#include <asm/fcntl.h>
 
 #define DIM_REF 100
 #define DIM_FP 200

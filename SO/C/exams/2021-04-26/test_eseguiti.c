@@ -1,4 +1,4 @@
-#include <signal.h>
+ #include <signal.h>
 #include <asm/fcntl.h>
 #define DIM_REF 100
 #define DIM_FP 200
@@ -59,6 +59,90 @@ int main(int argc, char const *argv[]){
         exit(6);
     }
 
+    pid=fork();
+    if(pid<0){
+        perror("P0: fork");
+        exit(7);
+    }
+    if(pid==0){
+        /*
+            CODICE P1
+        */
+
+        // CHIUDO CANALI NON UTILIZZATI
+        //P1 ascolta
+        close(p0p1[1]);
+
+        //P2 invia
+        close(p0p2[0]);
+
+        //imposto gestione SIGINT default
+        signal(SIGINT, SIG_DFL);
+
+        while(1){
+            // leggo refertatore inviato da P0
+            nread=read(p0p1[0],ref,sizeof(ref)-1);
+            if(nread<0){
+                perror("P1: read");
+                exit(8);
+            }
+            ref[nread]='\0';
+
+            pid = fork();
+            if(pid<0){
+                perror("P1: fork");
+                exit(9);
+            }
+            if(pid==0){
+                /*
+                    CODICE P2
+                */
+
+                //chiudo pipe tra p0 e p1 lato lettura
+                close(p0p1[0]);
+                
+                //ridirigo lo stdout
+                close(1);
+                dup(p0p2[1]);
+
+                //chiudo pipe tra p0 e p2 lato scrittura
+                close(p0p2[1]);
+
+                execlp("grep","grep", ref, filepath,(char *)0);
+                perror("P2: grep");
+                exit(10);
+            }
+            //attendo terminazione P2
+            wait(&status);
+        }
+    }
+
+    //chiudo pipe tra p0 e p1 lato lettura
+    close(p0p1[0]);
+
+    //chiudo pipe tra p0 e p2 lato scrittura
+    close(p0p2[1]);
+
+    while(1){
+        printf("Inserire refertatore: ");
+        scanf("%s",ref);
+
+        //P0 invia refertatore a P1
+        nwrite = write(p0p1[1], ref, strlen(ref)+1);
+        if(nwrite!=(int)(strlen(ref)+1)){
+            perror("P0: write");
+            exit(11);
+        }
+
+        //P0 legge e stampa i risultati inviati da P2
+        nread = read(p0p2[0],res,sizeof(res)-1);
+        if(nread<0){
+            perror("P0: read");
+            exit(12);
+        }
+        res[nread]='\0';
+        count+=nread;
+    }
 
     return 0;
 }
