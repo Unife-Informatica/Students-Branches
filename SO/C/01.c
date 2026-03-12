@@ -6,8 +6,10 @@
 int main(int argc,char **argv){
     int fd;
     char buff[1024];
+    printf("Ciao");
     if(argc!=2){
         fprintf(stderr,"Uso: ./%s <nomefile>\n",argv[0]);
+        printf("Ciao come stai?");
         exit(1);
     }
     fd=open(argv[1], O_TRUNC|O_WRONLY|O_CREAT|0644);
