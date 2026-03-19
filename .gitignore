@@ -16,3 +16,6 @@ prog
 
 # programming languages
 *.class
+
+# python
+__pycache__/
