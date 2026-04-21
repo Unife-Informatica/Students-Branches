@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//to Do
+
 void pianeta_spritz(FILE *inFile, FILE *outFile){
   int N, Q;
   fscanf(inFile, "%d %d", &N, &Q);
