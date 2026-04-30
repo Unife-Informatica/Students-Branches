@@ -27,6 +27,8 @@
 - [OS](./OS/)
 - [Programming Languages](./programming%20languages/)
 - [Database](./database/)
+- [algorithms and data structures](./algorithms and data structures/)
+- [calcolo numerico](./calcolo numerico/)
 
 
 ## <a name="contribute">:pencil2: Contribute</a>
