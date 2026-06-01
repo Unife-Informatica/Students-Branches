@@ -36,6 +36,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             // TASK 4 — Definisci le regole di validazione per i tre campi:
             'name'          => 'required|string|min:3|max:255',
@@ -52,15 +53,19 @@ class ProjectController extends Controller
                 
                 $project->load('department');
 
+                // CORREZIONE: Inseriamo 'name' e 'department_name' espliciti per il frontend del prof
                 return response()->json([
                     "success" => true,
                     "message" => "Project creato con successo!",
                     "data" => [
-                        "id"          => $project->id,
-                        "site_name"   => $project->site_name,
-                        "department"  => $project->department ? $project->department->name : null,
-                        "created_at"  => $project->created_at->format('d/m/Y'),
-                        "updated_at"  => $project->updated_at->format('d/m/Y')
+                        "id"              => $project->id,
+                        "name"            => $project->name, 
+                        "site_name"       => $project->site_name,
+                        "department_id"   => $project->department_id,
+                        "department"      => $project->department ? $project->department->name : null,
+                        "department_name" => $project->department ? $project->department->name : null,
+                        "created_at"      => $project->created_at->format('d/m/Y'),
+                        "updated_at"      => $project->updated_at->format('d/m/Y')
                     ]
                 ], 200);
 
@@ -107,6 +112,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        
         $request->validate([
             // TASK 6 — Stesse regole di validazione del metodo store():
             'name'          => 'required|string|min:3|max:255',
