@@ -1,0 +1,93 @@
+%\usepackage{beamerthemesplit}
+\documentclass{beamer}
+
+\usetheme[hideallsubsections]{Madrid}
+\usecolortheme{seagull} 
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[OT1,T1]{fontenc}
+
+%\usepackage[ascii]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[OT1,T1]{fontenc}
+\usepackage{setspace}
+\usepackage{listings}
+\lstloadlanguages{Java}
+\definecolor{mycolor}{HTML}{D9D9F3}
+\definecolor{blue2}{rgb}{0.3,0.5,0.98}
+\definecolor{vured}{HTML}{891C2E}
+
+\usepackage{helvet}
+
+\useoutertheme{infolines}
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{graphicx} 
+\def\UrlFont{\small\sf\color{blue2}}%{\def\UrlFont{\small\ttfamily}}
+\newcommand{\smallurl}[1]{ \UrlFont{\tiny\sf}\url{#1}}
+
+
+
+%\usepackage{enumitem}
+
+\newtheorem{task}{Task}%[section]
+
+    \defbeamertemplate*{footline}{my infolines theme}
+    {
+      \leavevmode%
+      \hbox{%
+      \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{auth
+or in head/foot}%
+        \usebeamerfont{author in head/foot}\insertshortauthor~~\insertshortinsti
+tute
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{titl
+e in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date 
+in head/foot}%
+        \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+        \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+      \end{beamercolorbox}}%
+      \vskip0pt%
+    }
+
+\setbeamertemplate{bibliography item}{[\theenumiv]}
+
+% \ifx\pdftexversion\undefined
+% \usepackage[dvips]{graphicx}
+% \else
+% \usepackage[pdftex]{graphicx}
+% \DeclareGraphicsRule{*}{mps}{*}{}
+% \fi
+\date{2014}
+\title{Problem-Based Project}
+\author[]{Agnė Brilingaitė, Linas Bukauskas, Linas Būtėnas, Vaida Čeikutė, Kazimieras Mickus}
+\institute[VU MIF]{Vilnius University\\Faculty of Mathematics and Informatics}
+
+
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.433333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor%~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.233333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+
+\begin{document}

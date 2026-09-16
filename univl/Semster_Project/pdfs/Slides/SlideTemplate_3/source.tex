@@ -1,0 +1,52 @@
+\LangSpec{\GenLang}
+{\section{Language Basics}
+\subsection{Parameters and Variables}
+}
+{
+\section{Pagrindai}
+\subsection{Parametrai ir kintamieji}
+}
+
+\LangSpec{\GenLang}
+{\begin{frame}{Parameter Passing to Methods}
+\begin{itemize}
+\item Parameters of primitive types are passed by value, i.e. value is copied to a particular variable of the method.
+\item When objects are passed the references to objects are copied to variables; as object variables store references to objects in the memory. Thus, it is possible to change the object using a reference.
+\item Actual parameters are used to invoke methods, while formal parameters are used within a method. 
+\end{itemize}
+\end{frame}
+}
+{
+\begin{frame}{Parametrų perdavimas metodams}
+\begin{itemize}
+\item Primityviųjų tipų parametrai perduodami pagal reikšmę, t.y. reikšmė nukopijuojama į atitinkamą kintamąjį.
+\item Perduodant objektus nukopijuojama nuoroda į objektą, bet ne pats objektas, taip objektą galima modifikuoti prieinant per nuorodą.
+\item Tikrieji (angl. actual) parametrai naudojami kviečiant metodus, formalieji (angl. formal) naudojami metodo viduje.
+\end{itemize}
+\end{frame}
+}
+
+\LangSpec{\GenLang}
+{\begin{frame}[fragile]{Parameters. Value}
+Value of the {\bf actual} parameter is copied to the {\bf formal} parameter.
+}
+{\begin{frame}[fragile]{Parametrai. Reikšmė}
+Tikrojo parametro reikšmė nukopijuojama į formalų parametrą.
+}
+% \begin{figure}
+%     \includegraphics[height=3cm]{figures/printValue}
+% \end{figure}
+\begin{lstlisting}[keywordstyle=\color{mygreen},commentstyle=\color{vured}]
+class Sorting{
+  static void printValue(int value){//formal parameter
+   System.out.println(value);
+  }
+  public static void main(String[] args){
+   int[] arr = {1, 2, 3};
+   printValue(arr[0]); //actual parameter
+   int k = 15;
+   printValue(k); //actual parameter
+  }
+}
+\end{lstlisting}
+\end{frame}

@@ -1,0 +1,68 @@
+%\usepackage{beamerthemesplit}
+\usetheme[hideallsubsections]{Madrid}
+
+%\usepackage[ascii]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[OT1,T1]{fontenc}
+
+\usepackage{listings}
+\lstloadlanguages{Java}
+\definecolor{mycolor}{HTML}{D9D9F3}
+\definecolor{blue2}{rgb}{0.3,0.5,0.98}
+\definecolor{vured}{HTML}{891C2E}
+\definecolor{mygreen}{HTML}{003200}%too light {rgb}{0,0.6,0}
+
+\usepackage{helvet}
+%\usepackage{palatino}
+\useoutertheme{infolines}
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{graphicx} 
+%\usepackage{subfig}
+%\urlstyle{rm}
+%bandau
+% \usepackage[usenames,dvipsnames]{pstricks}
+% \usepackage{epsfig}
+%  \usepackage{pst-grad} % For gradients
+%  \usepackage{pst-plot} % For axes
+
+% \usepackage{emp}
+% \ifx\pdftexversion\undefined
+% \usepackage[dvips]{graphicx}
+% \else
+% \usepackage[pdftex]{graphicx}
+% \DeclareGraphicsRule{*}{mps}{*}{}
+% \fi
+
+
+
+
+\def\figinput#1#2{\includegraphics[#1]{#2}}
+\usepackage{alltt}
+\def\UrlFont{\small\sf\color{blue2}}%{\def\UrlFont{\small\ttfamily}}
+\newcommand{\smallurl}[1]{ \UrlFont{\tiny\sf}\url{#1}}
+%%%%%%%%%%%%%%%%%%%%%
+% Java kodui aprašyti
+
+\lstset{commentstyle=\color{vured},language=Java,backgroundcolor=\color{mycolor},xleftmargin=10pt, framexleftmargin=6pt, numbersep=1mm, frame=single, numbers=left,numberstyle=\footnotesize,extendedchars=\true, inputencoding=utf8x,basicstyle=\footnotesize,
+% basicstyle=\ttfamily,
+ keywordstyle=\color{black}\bfseries, breaklines=true, breakautoindent=true,framesep=8pt}
+
+\usepackage{ifthen}
+
+\newcommand{\LangSpec}[3]
+{
+ \ifthenelse{\equal{#1}{en}}{#2}{#3}
+}
+\newcommand{\GenLang}{en}
+
+
+
+
+
+%\begin{document}
+
+
