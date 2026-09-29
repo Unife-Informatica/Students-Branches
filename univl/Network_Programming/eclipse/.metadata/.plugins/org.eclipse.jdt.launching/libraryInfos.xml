@@ -11,6 +11,7 @@
             <entry path="null"/>
         </endorsedDirs>
     </libraryInfo>
+    <libraryInfo home="/usr/lib/jvm/java-25-openjdk" version="25.0.4.1"/>
     <libraryInfo home="/home/gabriele/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_25.0.4.v20260826-0822" version="25.0.4.1">
         <bootpath>
             <entry path="null"/>
