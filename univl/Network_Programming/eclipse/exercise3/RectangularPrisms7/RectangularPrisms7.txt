@@ -1,0 +1,7 @@
+Rectangular prism with a base with sides a = 2.0 and b = 1.5, and a height 3.0, has an area P = 27.0 and a volume V = 9.0.
+Rectangular prism with a base with sides a = 4.0 and b = 3.0, and a height 6.0, has an area P = 108.0 and a volume V = 72.0.
+Rectangular prism with a base with sides a = 6.0 and b = 4.5, and a height 9.0, has an area P = 243.0 and a volume V = 243.0.
+Rectangular prism with a base with sides a = 8.0 and b = 6.0, and a height 12.0, has an area P = 432.0 and a volume V = 576.0.
+Rectangular prism with a base with sides a = 10.0 and b = 7.5, and a height 15.0, has an area P = 675.0 and a volume V = 1125.0.
+Rectangular prism with a base with sides a = 12.0 and b = 9.0, and a height 18.0, has an area P = 972.0 and a volume V = 1944.0.
+Rectangular prism with a base with sides a = 14.0 and b = 10.5, and a height 21.0, has an area P = 1323.0 and a volume V = 3087.0.
