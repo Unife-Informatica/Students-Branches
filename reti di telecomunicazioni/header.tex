@@ -1,5 +1,224 @@
+% --- 1. Colori (senza option clash con Pandoc) ---
+\PassOptionsToPackage{dvipsnames,svgnames,table}{xcolor}
+\makeatletter
+\@ifpackageloaded{xcolor}{}{\usepackage{xcolor}}
+\makeatother
+
+\definecolor{PrimaryColor}{HTML}{1B365D}   % Blu accademico
+\definecolor{AccentColor}{HTML}{2B6CB0}    % Blu medio per link ed enfasi
+\definecolor{MutedText}{HTML}{4A5568}      % Grigio ardesia per testatine/didascalie
+\definecolor{LightBg}{HTML}{F7FAFC}        % Sfondo chiaro per box/nodi
+\definecolor{BorderGray}{HTML}{CBD5E0}     % Bordo sottile
+
+% --- 2. Margini e Geometria Pagina ---
+\makeatletter
+\@ifpackageloaded{geometry}{}{\usepackage{geometry}}
+\makeatother
+\geometry{
+  a4paper,
+  top=2.5cm,
+  bottom=2.5cm,
+  left=2.5cm,
+  right=2.5cm,
+  headheight=14pt
+}
+
+% --- 3. Tipografia e Spaziatura ---
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.15}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}
+
+% --- 4. Titoli e Sezioni ---
+\usepackage{titlesec}
+\titleformat{\section}
+  {\Large\bfseries\color{PrimaryColor}}
+  {\thesection}{0.75em}{}
+  [\vspace{2pt}{\color{BorderGray}\titlerule[0.6pt]}]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{PrimaryColor}}
+  {\thesubsection}{0.65em}{}
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{AccentColor}}
+  {\thesubsubsection}{0.5em}{}
+
+\titleformat{\paragraph}[block]
+  {\normalsize\bfseries\color{MutedText}}
+  {\theparagraph}{0.5em}{}
+\titlespacing*{\paragraph}{0pt}{1em}{0.3em}
+
+% --- 5. Cattura Metadati e Pagina del Titolo ---
+\newcommand{\doctitle}{}
+\newcommand{\docsubtitle}{}
+\newcommand{\docauthor}{}
+\newcommand{\docinstitute}{}
+\newcommand{\docdate}{}
+
+\let\origtitle\title
+\renewcommand{\title}[1]{\gdef\doctitle{#1}\origtitle{#1}}
+
+\providecommand{\subtitle}[1]{}
+\renewcommand{\subtitle}[1]{\gdef\docsubtitle{#1}}
+
+\let\origauthor\author
+\renewcommand{\author}[1]{\gdef\docauthor{#1}\origauthor{#1}}
+
+\providecommand{\institute}[1]{}
+\renewcommand{\institute}[1]{\gdef\docinstitute{#1}}
+
+\let\origdate\date
+\renewcommand{\date}[1]{\gdef\docdate{#1}\origdate{#1}}
+
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \raggedright
+    \vspace*{1.5cm}
+
+    \ifx\docinstitute\empty\else
+      {\small\bfseries\color{AccentColor}\MakeUppercase{\docinstitute}\par}
+      \vspace{0.6cm}
+    \fi
+
+    {\color{AccentColor}\rule{3.2cm}{2.5pt}\par}
+    \vspace{0.8cm}
+
+    \ifx\doctitle\empty\else
+      {\fontsize{26}{32}\selectfont\bfseries\color{PrimaryColor}\doctitle\par}
+      \vspace{0.5cm}
+    \fi
+
+    \ifx\docsubtitle\empty\else
+      {\Large\color{MutedText}\docsubtitle\par}
+      \vspace{0.6cm}
+    \fi
+
+    \vspace{0.4cm}
+    {\color{BorderGray}\rule{\linewidth}{0.8pt}\par}
+
+    \vfill
+
+    \ifx\docauthor\empty\else
+      {\large\bfseries\color{PrimaryColor}\renewcommand{\and}{\\}\docauthor\par}
+      \vspace{0.35cm}
+    \fi
+
+    \ifx\docdate\empty\else
+      {\normalsize\color{MutedText}\docdate\par}
+    \fi
+
+    \vspace*{1cm}
+  \end{titlepage}
+}
+
+% --- 6. Intestazioni e Piè di Pagina ---
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{BorderGray}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\small\color{MutedText}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{MutedText}{\renewcommand{\and}{, }\docauthor}}
+\fancyfoot[C]{\small\color{MutedText}\thepage}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot[C]{\small\color{MutedText}\thepage}
+}
+
+% --- 7. Liste, Tabelle e Figure ---
+\usepackage{enumitem}
+\setlist{itemsep=0.25em, topsep=0.4em}
+
+\makeatletter
+\@ifpackageloaded{booktabs}{}{\usepackage{booktabs}}
+\makeatother
+
+\usepackage[font=small, labelfont={bf,color=PrimaryColor}, labelsep=period]{caption}
+\usepackage[section]{placeins}
+
+% --- 8. TikZ e Librerie ---
 \usepackage{tikz}
-\usetikzlibrary{matrix}
-\usetikzlibrary{positioning}
-\usepackage{xcolor}
-\usetikzlibrary{arrows.meta, positioning, calc}
+\usetikzlibrary{
+  arrows.meta,
+  calc,
+  matrix,
+  positioning,
+  shapes.geometric,
+  fit,
+  backgrounds
+}
+
+\tikzset{
+  >=Stealth,
+  basebox/.style={
+    rectangle,
+    rounded corners=3pt,
+    draw=PrimaryColor,
+    fill=LightBg,
+    thick,
+    inner sep=6pt,
+    align=center,
+    font=\small
+  },
+  accentbox/.style={
+    basebox,
+    draw=AccentColor,
+    fill=AccentColor!10,
+    font=\small\bfseries
+  },
+  flowarrow/.style={
+    ->,
+    thick,
+    color=PrimaryColor
+  },
+  matrixcell/.style={
+    rectangle,
+    draw=BorderGray,
+    minimum width=1.4cm,
+    minimum height=0.8cm,
+    anchor=center,
+    font=\small
+  }
+}
+
+% --- 9. Ambiente Callout (basato su TikZ, supporta paragrafi e liste) ---
+\newsavebox{\calloutbox}
+\newenvironment{callout}[1][Nota]{%
+  \def\callouttitle{#1}%
+  \begin{lrbox}{\calloutbox}%
+  \begin{minipage}{\dimexpr\linewidth-24pt\relax}%
+  {\small\bfseries\color{PrimaryColor}\callouttitle}\par\vspace{0.35em}\small
+}{%
+  \end{minipage}%
+  \end{lrbox}%
+  \par\vspace{0.6em}\noindent
+  \begin{tikzpicture}
+    \node[
+      rectangle,
+      rounded corners=3pt,
+      draw=BorderGray,
+      fill=LightBg,
+      line width=0.6pt,
+      inner sep=10pt
+    ] (box) {\usebox{\calloutbox}};
+    \fill[AccentColor] (box.north west) rectangle ([xshift=3.5pt]box.south west);
+  \end{tikzpicture}
+  \par\vspace{0.6em}
+}
+
+% --- 10. Hyperref (eseguito dopo che Pandoc ha caricato il pacchetto) ---
+\AtBeginDocument{%
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=PrimaryColor,
+    citecolor=AccentColor,
+    urlcolor=AccentColor,
+    pdfborder={0 0 0}
+  }%
+}

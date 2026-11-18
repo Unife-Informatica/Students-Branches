@@ -1,13 +1,16 @@
-# Appunti terzo classwork
+---
+title: "Appunti Terzo Classwork"
+author: "Pietro Peerani"
+---
 
-## Token Ring IEEE 802.5
+# Token Ring IEEE 802.5
 
 ![](terzo-classwork_20261118095540374.png)
 
 È stato introdotto da IBM nel 1984 e standardizzato come IEEE 802.5. Utilizza un frame di 3 bytes chiamato *token* ch viene passato attraverso un anello logico composto da workstations e server. Il passaggio di token è un metodo di accesso che fornisce un accesso equo per tutte le stazioni ed elimina le collisioni.
 La tecnologia token ring è diventata ampiamente utilizzata, in particolare in ambiente aziendale, ma gradualmente rimpiazzata da nuove interazioni di Ethernet.
 
-### Confronto con Ethernet
+## Confronto con Ethernet
 
 Sono entrame tecnologie utilizzate per collegare più computer all'interno di una rete LAN. La differenza principale riguarda il modo in cui i computer comunicano e si dividono il canale di trasmissione.
 Nel modello token ring a differenza dell'ethernet il computer deve attendere la ricezione di un token prima di trasmettere. Questa pratica permette di ridurre le collisioni a zero.
@@ -17,7 +20,7 @@ Nonostante ciò Ethernet ha avuto piu successo principalemente per 3 motivi:
 2. maggiore semplicità
 3. grzie ai cavi a doppino intrecciato e degli switch, Ethernet è diventata più conveniente e veloce.
 
-### Processo
+## Processo
 
 Il processo di trasmissione dei dati opera come segue:
 
@@ -28,11 +31,11 @@ Il processo di trasmissione dei dati opera come segue:
 5. il pacchetto continua a circolare fino a raggiungere nuovamente il computer che lo aveva inviato. Il mittente controlla i bit di stato per verificare se il destinatario ha ricevuto e copiato correttamente il messaggio.
 6. il mittente rimuove i dati e lo rende nuovamente disponibile.
 
-### Cablaggio
+## Cablaggio
 
-### Frames
+## Frames
 
-#### Token
+### Token
 
 Il token IEEE 802.5 è composto da 3 byte (24 bit).
 
@@ -81,7 +84,7 @@ Il token IEEE 802.5 è composto da 3 byte (24 bit).
 - AC: contiene le informazioni di controllo priorità
 - ED: indica la fine del token
 
-##### Access Control (AC)
+#### Access Control (AC)
 
 \begin{center}
 \begin{tikzpicture}
@@ -115,7 +118,7 @@ Il token IEEE 802.5 è composto da 3 byte (24 bit).
 - `M` monitor bit usato per il controllo dell'anello
 - `R0`, `R1`, `R2` bit di prenotazione della priorità
 
-#### Frame
+### Frame
 
 Quando una stazione acquisisce il token può trasmettere un frame contenente informazioni. Il frame dati è più grande del token e presenta una struttura composta da diversi campi.
 
@@ -124,8 +127,8 @@ Quando una stazione acquisisce il token può trasmettere un frame contenente inf
 \matrix[
     matrix of nodes,
     nodes={
-        minimum height=0.5cm,
-        inner sep=3pt,
+        minimum height=0.6cm,
+        inner sep=2pt,
         outer sep=0pt,
         text=white,
         font=\sffamily\bfseries\small,
@@ -133,30 +136,40 @@ Quando una stazione acquisisce il token può trasmettere un frame contenente inf
         anchor=center,
         align=center
     },
-    column sep=1pt,
+    row 2/.style={
+        nodes={
+            text=black,
+            font=\sffamily\scriptsize,
+            minimum height=0.35cm,
+            text height=1.5ex,
+            text depth=0.25ex,
+            inner sep=1pt
+        }
+    },
+    column sep=1.5pt,
     row sep=3pt
 ] {
-    |[fill=blue!75!black, minimum width=1.15cm]| SD &
-    |[fill=teal!75!black, minimum width=1.15cm]| AC &
-    |[fill=red!65!black, minimum width=1.15cm]| FC &
-    |[fill=blue!75!black, minimum width=1.15cm]| DA &
-    |[fill=blue!75!black, minimum width=1.15cm]| SA &
-    |[fill=gray!65!blue, minimum width=1.15cm]| RI &
-    |[fill=teal!75!black, minimum width=1.15cm]| INFO &
-    |[fill=orange!85!black, minimum width=1.15cm]| FCS &
-    |[fill=blue!75!black, minimum width=1.15cm]| ED &
-    |[fill=orange!85!black, minimum width=1.15cm]| FS \\
+    |[fill=blue!75!black, minimum width=0.95cm]| SD &
+    |[fill=teal!75!black, minimum width=0.95cm]| AC &
+    |[fill=red!65!black, minimum width=0.95cm]| FC &
+    |[fill=blue!75!black, minimum width=1.55cm]| DA &
+    |[fill=blue!75!black, minimum width=1.55cm]| SA &
+    |[fill=gray!65!blue, minimum width=1.85cm]| RI &
+    |[fill=teal!75!black, minimum width=2.45cm]| INFO &
+    |[fill=orange!85!black, minimum width=1.25cm]| FCS &
+    |[fill=blue!75!black, minimum width=0.95cm]| ED &
+    |[fill=orange!85!black, minimum width=0.95cm]| FS \\
 
-    |[text=black, font=\sffamily\scriptsize]|  &
-    |[text=black, font=\sffamily\scriptsize]| 1 byte &
-    |[text=black, font=\sffamily\scriptsize]| 1 byte &
-    |[text=black, font=\sffamily\scriptsize]| 6 byte &
-    |[text=black, font=\sffamily\scriptsize]| 6 byte &
-    |[text=black, font=\sffamily\scriptsize]| 0--30 byte &
-    |[text=black, font=\sffamily\scriptsize]| Variabile &
-    |[text=black, font=\sffamily\scriptsize]| 4 byte &
-    |[text=black, font=\sffamily\scriptsize]| 1 byte &
-    |[text=black, font=\sffamily\scriptsize]| 1 byte \\
+    1 byte &
+    1 byte &
+    1 byte &
+    6 byte &
+    6 byte &
+    0--30 byte &
+    Variabile &
+    4 byte &
+    1 byte &
+    1 byte \\
 };
 \end{tikzpicture}
 \end{center}
@@ -171,7 +184,7 @@ Quando una stazione acquisisce il token può trasmettere un frame contenente inf
 
 ---
 
-## Real Time Protocol (RTP)
+# Real Time Protocol (RTP)
 
 RTP  è un protocollo e rappresenta un valido supporto per il trasferimento di dati in tempo reale, come ad esempio flussi audio e video. I servizi forniti da RTP sono essenzialmente i seguenti:
 
@@ -216,7 +229,7 @@ Lo standard è diviso in due parti strettamente legate:
     \end{tikzpicture}
 \end{figure}
 
-### Esempi d'impiego
+## Esempi d'impiego
 
 In una conferenza audio/video entrami i media sono trasmessi come sessioni RTP separate e i pacchetti RTCP relativi usano due differenti coppie di porte UDP. Le sessioni RTP audio e video non sono perciò accoppiate tra loro per permettere ai partecipanti di ricevere soltanto uno dei due media a loro scelta. Nonostante questo è possibile sincronizzare il playback usando le informazioni di temporizzazione trasportate nei pacchetti RTCP.
 
@@ -337,7 +350,7 @@ In una conferenza audio/video entrami i media sono trasmessi come sessioni RTP s
 
 Ogni partecipante invia i dati audio in pacchetti da $20ms$ di durata con un header RTP in cui è indicata la codifica usata per l'audio. Il payload type può cambiare durante la conferenza per reagire ad esempio ad un calo di banda.
 
-### Protocollo di trasporto (RTP)
+## Protocollo di trasporto (RTP)
 
 Per ogni partecipante di una conferenza, la sessione RTP è definita da una particolare coppia di indirizzi di destinazione:
 
@@ -348,7 +361,7 @@ In una conferenza multimediale ogni media (audio o video) ha una sua separata se
 
 Il pacchetto dati consiste in un header fisso RTP, una eventuale lista chiamata contributing source (CSRC) e il payload data (la sorgente dati).
 
-### Protocollo di controllo (RTCP)
+## Protocollo di controllo (RTCP)
 
 L'RTP Control Protocol è basato sulla trasmissione periodica dei pacchetti di controllo a tutti i partecipanti ad una sessione. Il protocollo sottostante deve quindi provvedere alla separazione dei pacchetti usando porte con numeri diversi.
 
@@ -440,7 +453,7 @@ Per ogni sessione si suppone quindi che il traffico sia sottoposto ad un limite 
 
 ---
 
-## References
+# References
 <!-- Token Ring -->
 - https://en.wikipedia.org/wiki/Token_Ring
 - https://www3.diism.unisi.it/~giambene/reti_di_telecomunicazioni_materiale/materiale_didattico/Nuovo_Ordinamento/Accesso_multiplo_MAC.PDF
