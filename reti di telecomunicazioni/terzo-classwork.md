@@ -5,9 +5,10 @@ author: "Pietro Peerani"
 
 # Token Ring IEEE 802.5
 
-![](terzo-classwork_20261118095540374.png)
+![token ring](terzo-classwork_20261118095540374.png)
 
 È stato introdotto da IBM nel 1984 e standardizzato come IEEE 802.5. Utilizza un frame di 3 bytes chiamato *token* ch viene passato attraverso un anello logico composto da workstations e server. Il passaggio di token è un metodo di accesso che fornisce un accesso equo per tutte le stazioni ed elimina le collisioni.
+Dalla figura si può notare un grosso problema: se il cavo si interrompe in un qualsiasi punto il ring stesso si interrompe e la comunicazione diviene impossibile. Per superare tale ostacolo è stata proposta una nuova topologia che fa uso del **wire center**. Le stazioni sono collegate al wire center con almeno due cavi coassiali, per avere flusso di dati in entrambe le direzioni. All'interno del wire center vi sono dei relè che vengono automaticamente attivati quando la stazione a cui fanno riferimento si guasta, e come effetto producono il bypass della stazione stessa.
 La tecnologia token ring è diventata ampiamente utilizzata, in particolare in ambiente aziendale, ma gradualmente rimpiazzata da nuove interazioni di Ethernet.
 
 ## Confronto con Ethernet
@@ -27,11 +28,16 @@ Il processo di trasmissione dei dati opera come segue:
 1. il token passa continuamente da una macchina all'altra nell'anello. Finché libero permette ad un computer di trasmettere.
 2. quando un computer vuole inviare un messaggio intercetta il token libero, lo contrassegna come occupato e inserisce al suo interno i dati da trasmettere e l'indirizzo del destinatario.
 3. il frame passa da una macchina all'altra. Ogni computer controlla l'indirizzo del destinatario. Se non è il destinatario inoltra il pacchetto al computer successivo.
-4. quando il pacchetto raggiunge il pacchetto destinatario, quest'ultimo copia i dati e modifica alcuni bit del frame per segnalare che il messaggio è stato ricevuto e copiato. <!-- aggiornare la parte di pacchetto modificata -->
+4. quando il pacchetto raggiunge il pacchetto destinatario, quest'ultimo copia i dati e modifica il frame per segnalare che il messaggio è stato ricevuto e copiato.
 5. il pacchetto continua a circolare fino a raggiungere nuovamente il computer che lo aveva inviato. Il mittente controlla i bit di stato per verificare se il destinatario ha ricevuto e copiato correttamente il messaggio.
 6. il mittente rimuove i dati e lo rende nuovamente disponibile.
 
-## Cablaggio
+Tutto questo meccanismo è supervisionato da una stazione detta **Active Monitor** che ha il compito di risolvere eventuali situazioni anomale.
+
+L'interfaccia sul ring delle stazioni può operare in due modalità:
+
+- ascolto: la stazione copia il bit che riceve in ingresso sull'uscita
+- trasmissione: in cui la stazione interrompe il ring e inserisce nell'anello il frame che deve inviare
 
 ## Frames
 
@@ -113,14 +119,14 @@ Il token IEEE 802.5 è composto da 3 byte (24 bit).
 \end{tikzpicture}
 \end{center}
 
-- `P0`, `P1`, `P2` indicano la priorità del token o del pacchetto
-- `T` distingue un token da un pacchetto (T=0 token libero, T=1 pacchetto)
-- `M` monitor bit usato per il controllo dell'anello
-- `R0`, `R1`, `R2` bit di prenotazione della priorità
+- `P0`, `P1`, `P2` indicano la priorità del token o del pacchetto.
+- `T` distingue un token da un pacchetto (T=0 token libero, T=1 pacchetto).
+- `M` è usato da una particolare stazione denominata Monitor Station per evitare che il frame continui a circolare indefinitivamente sul ring.
+- `R0`, `R1`, `R2` bit che permettono la prenotazione del token con una priorità.
 
 ### Frame
 
-Quando una stazione acquisisce il token può trasmettere un frame contenente informazioni. Il frame dati è più grande del token e presenta una struttura composta da diversi campi.
+Una stazione che rileva il token ed ha qualcosa da trasmettere, verifiche che il frame da spedire abbia priorità meggiore o uguale a quella del token, dunque, in caso affermativo momodifica il bit `T`, modificando il token in un frame dati, e successivamente accoda il frame rispettando il formato:
 
 \begin{center}
 \begin{tikzpicture}
@@ -181,6 +187,15 @@ Quando una stazione acquisisce il token può trasmettere un frame contenente inf
 - INFO: contiene i dati veri e propri
 - FCS: contiene un valore di controllo calcolato mediante un algoritmo CRC.
 
+La frame inviata, percorrerà tutto l’anello fino a tornare alla stazione trasmittente che avrà il compito di estrarla dal ring, e reinserire il token nel caso in cui non ha più nulla da trasmettere oppure è scaduto il **THT** (Token Holding time), e dunque deve necessariamente passare il token.
+
+## Monitor Station
+
+Per ogni anello vi è una stazione che monitora il funzionamento del ring. Se tale stazione si guasta è previsto un meccanismo che permette ad un'altra workstation di diventare monitor station. Questa stazione si occupa di risolvere tutte le condizioni di malfunzionamento del ring:
+
+- controllare che il token non venga perso (es. a causa di disturbi)
+- ricerca di eventuali interruzioni del ring
+- eliminazione di frame che circolano indefinitivamente sul ring
 
 ---
 
@@ -455,7 +470,7 @@ Per ogni sessione si suppone quindi che il traffico sia sottoposto ad un limite 
 
 # References
 <!-- Token Ring -->
-- https://en.wikipedia.org/wiki/Token_Ring
-- https://www3.diism.unisi.it/~giambene/reti_di_telecomunicazioni_materiale/materiale_didattico/Nuovo_Ordinamento/Accesso_multiplo_MAC.PDF
+- <https://en.wikipedia.org/wiki/Token_Ring>
+- <https://www3.diism.unisi.it/~giambene/reti_di_telecomunicazioni_materiale/materiale_didattico/Nuovo_Ordinamento/Accesso_multiplo_MAC.PDF>
 <!-- Real Time Protocol (RTP) -->
-- https://homes.di.unimi.it/~alberti/Mm07/doc/rtp.pdf
+- <https://homes.di.unimi.it/~alberti/Mm07/doc/rtp.pdf>
