@@ -5,7 +5,7 @@ author: "Pietro Peerani"
 
 # Token Ring IEEE 802.5
 
-![token ring](terzo-classwork_20261118095540374.png)
+![token ring](images/terzo-classwork_20261118095540374.png)
 
 È stato introdotto da IBM nel 1984 e standardizzato come IEEE 802.5. Utilizza un frame di 3 bytes chiamato *token* ch viene passato attraverso un anello logico composto da workstations e server. Il passaggio di token è un metodo di accesso che fornisce un accesso equo per tutte le stazioni ed elimina le collisioni.
 Dalla figura si può notare un grosso problema: se il cavo si interrompe in un qualsiasi punto il ring stesso si interrompe e la comunicazione diviene impossibile. Per superare tale ostacolo è stata proposta una nuova topologia che fa uso del **wire center**. Le stazioni sono collegate al wire center con almeno due cavi coassiali, per avere flusso di dati in entrambe le direzioni. All'interno del wire center vi sono dei relè che vengono automaticamente attivati quando la stazione a cui fanno riferimento si guasta, e come effetto producono il bypass della stazione stessa.
@@ -13,19 +13,19 @@ La tecnologia token ring è diventata ampiamente utilizzata, in particolare in a
 
 ## Confronto con Ethernet
 
-Sono entrame tecnologie utilizzate per collegare più computer all'interno di una rete LAN. La differenza principale riguarda il modo in cui i computer comunicano e si dividono il canale di trasmissione.
+Sono entrambe tecnologie utilizzate per collegare più computer all'interno di una rete LAN. La differenza principale riguarda il modo in cui i computer comunicano e si dividono il canale di trasmissione.
 Nel modello token ring a differenza dell'ethernet il computer deve attendere la ricezione di un token prima di trasmettere. Questa pratica permette di ridurre le collisioni a zero.
 Nonostante ciò Ethernet ha avuto piu successo principalemente per 3 motivi:
 
 1. costo inferiore
 2. maggiore semplicità
-3. grzie ai cavi a doppino intrecciato e degli switch, Ethernet è diventata più conveniente e veloce.
+3. grazie ai cavi a doppino intrecciato e degli switch, Ethernet è diventata più conveniente e veloce.
 
 ## Processo
 
 Il processo di trasmissione dei dati opera come segue:
 
-1. il token passa continuamente da una macchina all'altra nell'anello. Finché libero permette ad un computer di trasmettere.
+1. il token passa continuamente da una macchina all'altra nell'anello. Finché è libero permette ad un computer di trasmettere.
 2. quando un computer vuole inviare un messaggio intercetta il token libero, lo contrassegna come occupato e inserisce al suo interno i dati da trasmettere e l'indirizzo del destinatario.
 3. il frame passa da una macchina all'altra. Ogni computer controlla l'indirizzo del destinatario. Se non è il destinatario inoltra il pacchetto al computer successivo.
 4. quando il pacchetto raggiunge il pacchetto destinatario, quest'ultimo copia i dati e modifica il frame per segnalare che il messaggio è stato ricevuto e copiato.
@@ -126,7 +126,7 @@ Il token IEEE 802.5 è composto da 3 byte (24 bit).
 
 ### Frame
 
-Una stazione che rileva il token ed ha qualcosa da trasmettere, verifiche che il frame da spedire abbia priorità meggiore o uguale a quella del token, dunque, in caso affermativo momodifica il bit `T`, modificando il token in un frame dati, e successivamente accoda il frame rispettando il formato:
+Una stazione che rileva il token ed ha qualcosa da trasmettere, verifica che il frame da spedire abbia priorità maggiore o uguale a quella del token, dunque, in caso affermativo modifica il bit `T`, modificando il token in un frame dati, e successivamente accoda il frame rispettando il formato:
 
 \begin{center}
 \begin{tikzpicture}
@@ -197,6 +197,74 @@ Per ogni anello vi è una stazione che monitora il funzionamento del ring. Se ta
 - ricerca di eventuali interruzioni del ring
 - eliminazione di frame che circolano indefinitivamente sul ring
 
+## Valutazione delle prestazioni
+
+Vengono valutate le prestazioni del protocollo, con particolare determinazione del massimo throughput ottenibile. A tal fine viene introdotto il cosidetto fattore $a$, definito come:
+
+$$a=\frac{\text{tempo di propagazione}}{\text{tempo di trasmissione}}$$
+
+Il fattore $a$ indica la lunghezza del mezzo di trasmissione espressa in messaggi. 
+
+Si possono avere due casi:
+
+- Se $a<1$, normalizzo il tempo rispetto al tempo di trasmissione. Assumento che il tempo di trasmissione di un pacchetto è pari a $1$, la sequenza di eventi è:
+	1. La stazione 1 inizia a trasmettere nell’istante $t_0$.
+	2. La stazione 2 inizia a ricevere all’istante $t_0+a$.
+	3. La trasmissione è completata nell’istante $t_0+1$.
+	4. La ricezione è completata nell’istante $t_0+a+1$.
+- Viceversa se $a>1$ la sequenza di eventi è:
+	1. La stazione 1 inizia a trasmettere nell’istante $t_0$.
+	2. La trasmissione è completata nell’istante $t_0+1$.
+	3. La stazione 2 inizia a ricevere all’istante $t_0+a$.
+	4. La ricezione è completata nell’istante $t_0+a+1$.
+	5. Le altre stazioni possono iniziare la trasmissione di un altro messaggio.
+
+In ogni caso, il tempo totale per un ciclo è $1+a$, mentre il tempo di trasmissione è $1$; l’utilizzazione sarà dunque pari a:
+
+$$U=\frac{1}{1+a}$$
+
+![comunicazione token ring](images/terzo-classwork_20261119143430405.png)
+
+Nel caso più generale si può immaginare che dopo che la stazione sender ha rilasciato il token, ci potrà essere una delle altre stazioni che potrà utilizzarlo. Diventa fondamentale la distinzione fra i due casi, perché nel valutare il tempo di ciclo bisogna aggiungere al tempo di propagazione del token fra la stazione e quella successiva, un tempo che nel primo caso è $a$ mentre nel secondo è $1$.
+
+Si valuta il massimo throughput ottenibile nelle LAN supponendo che vi siano $N$ stazioni connesse.
+
+### Token Passing
+
+Nel protocollo Token Ring, con il passare del tempo, sull’anello transitano sia frame di dati sia token. Si definisce ciclo la successione di un singolo frame e di un token. Si definiscono:
+
+- $C$ = tempo medio per un ciclo
+- $t_{frame}$ = tempo medio di trasmissione di un frame di dati
+- $t_{token}$ = tempo medio di passaggio del token
+
+Il rate medio di ciclo è dato dall'inverso di $C$ e si ha:
+
+$$\frac{1}{C} = \frac{1}{t_{token} + t_{frame}}$$
+
+Indicando con $S$ il throughput della rete locale normalizzo rispetto alle capacità del sistema:
+
+$$S=\frac{t_{frame}}{t_{frame}+t_{token}} = \frac{t_{frame}}{C}$$
+
+$S$ rappresenta dunque la funzione di tempo che è spesa dal sistema per trasmettere i dati.
+
+Ricordando che il tempo è normalizzato, cioè il tempo di trasmissione del pacchetto è unitario, mentre il tempo di propagazione è indicato con $a$:
+
+Sia $a<1$, la stazione trasmette il pacchetto nell'istante $t_0$, inizia a ricevere all'istante $t_0+a$, e completa la trasmissione all'instante $t_0+1$. La stazione quindi ementte un nuovo token, che richiede un tempo pari ad $\frac{a}{N}$ per raggiungere la stazione successiva. Un ciclo richiede un tempo pari a:
+
+$$C = 1 + \frac{a}{N} \quad \Longrightarrow \quad S = \frac{1}{1+\frac{a}{N}}$$
+
+Sia $a<1$, la stazione trasmette nell’istante $t_0$, completa la trasmissione all’istante $t_0+1$, e riceve il pacchetto spedito all’istante $t_0+a$. A questo punto, emette il token che raggiungerà la stazione successiva dopo un tempo pari ad $\frac{a}{N}$. Il tempo di ciclo è dunque:
+
+$$C=a+\frac{a}{N} \quad \Longrightarrow \quad S=\frac{1}{a\big(1+\frac{1}{N}\big)}$$
+
+Considerando i risultati:
+
+$$S =
+\begin{cases}
+\dfrac{1}{1+\dfrac{a}{\sqrt{N}}} & a < 1 \\[10pt]
+\dfrac{1}{a\left(1+\dfrac{1}{\sqrt{N}}\right)} & a > 1
+\end{cases}$$
+
 ---
 
 # Real Time Protocol (RTP)
@@ -209,7 +277,7 @@ RTP  è un protocollo e rappresenta un valido supporto per il trasferimento di d
 4. monitoring
 
 Le applicazioni tipicamente pongono RTP sopra UDP. Il trasferimento di dati verso molteplici destinazioni avviene con una distribuzione multicast.
-E' da notare che questo protocollo non prevede **nessun meccanismo che assicuri una corretta trasmissione** o che garantisca la qualità del servizio, in quanto questo e' compito degli strati più bassi. Inoltre **non si interessa direttamente di un errato ordine di consegna** dei pacchetti. I numeri di sequenza inclusi da RTP permettodono al ricevente di ricostruire la sequenza.
+E' da notare che questo protocollo non prevede **nessun meccanismo che assicuri una corretta trasmissione** o che garantisca la qualità del servizio, in quanto questo e' compito degli strati più bassi. Inoltre **non si interessa direttamente di un errato ordine di consegna** dei pacchetti. I numeri di sequenza inclusi da RTP permettono al ricevente di ricostruire la sequenza.
 
 Lo standard è diviso in due parti strettamente legate:
 
