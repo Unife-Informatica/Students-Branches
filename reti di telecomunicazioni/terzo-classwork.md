@@ -7,9 +7,17 @@ author: "Pietro Peerani"
 
 ![token ring](images/terzo-classwork_20261118095540374.png)
 
-È stato introdotto da IBM nel 1984 e standardizzato come IEEE 802.5. Utilizza un frame di 3 bytes chiamato *token* ch viene passato attraverso un anello logico composto da workstations e server. Il passaggio di token è un metodo di accesso che fornisce un accesso equo per tutte le stazioni ed elimina le collisioni.
-Dalla figura si può notare un grosso problema: se il cavo si interrompe in un qualsiasi punto il ring stesso si interrompe e la comunicazione diviene impossibile. Per superare tale ostacolo è stata proposta una nuova topologia che fa uso del **wire center**. Le stazioni sono collegate al wire center con almeno due cavi coassiali, per avere flusso di dati in entrambe le direzioni. All'interno del wire center vi sono dei relè che vengono automaticamente attivati quando la stazione a cui fanno riferimento si guasta, e come effetto producono il bypass della stazione stessa.
-La tecnologia token ring è diventata ampiamente utilizzata, in particolare in ambiente aziendale, ma gradualmente rimpiazzata da nuove generazioni di Ethernet.
+È stato introdotto da IBM nel 1984 e standardizzato come IEEE 802.5. Utilizza un frame di 3 byte chiamato *token* che viene passato attraverso un anello logico composto da workstation e server. Il passaggio del token è un metodo di accesso deterministico che fornisce un accesso equo per tutte le stazioni ed elimina completamente le collisioni.
+
+Dalla figura si può notare un grosso problema tipico degli anelli fisici puri: se il cavo si interrompe in un qualsiasi punto o una macchina si guasta, l'intero ring si interrompe e la comunicazione diviene impossibile. Per superare tale ostacolo è stata adottata una nuova architettura basata su un concentratore chiamato **wire center**, più comunemente noto come **MAU (*Multistation Access Unit*)**. 
+
+L'introduzione del MAU separa la struttura fisica del cablaggio dal funzionamento del protocollo:
+- **Topologia fisica a stella:** tutte le stazioni sono collegate centralmente al wire center tramite cavi dedicati (con doppia linea di trasmissione e ricezione per garantire il flusso dei dati in ingresso e in uscita), facilitando la gestione e l'espansione del cablaggio.
+- **Topologia logica ad anello:** internamente, il MAU instrada i segnali in modo che il token continui a passare sequenzialmente da una stazione all'altra, mantenendo intatto il comportamento ad anello.
+
+All'interno del wire center sono presenti dei **relè** che vengono automaticamente attivati quando la stazione a cui fanno riferimento si guasta o viene scollegata, producendo il **bypass** della stazione stessa ed evitando così la caduta dell'intera rete. Inoltre, più MAU possono essere collegati tra loro in cascata tramite le porte *Ring In* e *Ring Out* per ampliare l'anello logico.
+
+La tecnologia Token Ring è diventata ampiamente utilizzata, in particolare in ambiente aziendale, ma è stata gradualmente rimpiazzata dalle nuove generazioni di Ethernet.
 
 ## Confronto con Ethernet
 
