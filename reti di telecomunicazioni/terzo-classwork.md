@@ -9,7 +9,7 @@ author: "Pietro Peerani"
 
 È stato introdotto da IBM nel 1984 e standardizzato come IEEE 802.5. Utilizza un frame di 3 bytes chiamato *token* ch viene passato attraverso un anello logico composto da workstations e server. Il passaggio di token è un metodo di accesso che fornisce un accesso equo per tutte le stazioni ed elimina le collisioni.
 Dalla figura si può notare un grosso problema: se il cavo si interrompe in un qualsiasi punto il ring stesso si interrompe e la comunicazione diviene impossibile. Per superare tale ostacolo è stata proposta una nuova topologia che fa uso del **wire center**. Le stazioni sono collegate al wire center con almeno due cavi coassiali, per avere flusso di dati in entrambe le direzioni. All'interno del wire center vi sono dei relè che vengono automaticamente attivati quando la stazione a cui fanno riferimento si guasta, e come effetto producono il bypass della stazione stessa.
-La tecnologia token ring è diventata ampiamente utilizzata, in particolare in ambiente aziendale, ma gradualmente rimpiazzata da nuove interazioni di Ethernet.
+La tecnologia token ring è diventata ampiamente utilizzata, in particolare in ambiente aziendale, ma gradualmente rimpiazzata da nuove generazioni di Ethernet.
 
 ## Confronto con Ethernet
 
@@ -28,7 +28,7 @@ Il processo di trasmissione dei dati opera come segue:
 1. il token passa continuamente da una macchina all'altra nell'anello. Finché è libero permette ad un computer di trasmettere.
 2. quando un computer vuole inviare un messaggio intercetta il token libero, lo contrassegna come occupato e inserisce al suo interno i dati da trasmettere e l'indirizzo del destinatario.
 3. il frame passa da una macchina all'altra. Ogni computer controlla l'indirizzo del destinatario. Se non è il destinatario inoltra il pacchetto al computer successivo.
-4. quando il pacchetto raggiunge il pacchetto destinatario, quest'ultimo copia i dati e modifica il frame per segnalare che il messaggio è stato ricevuto e copiato.
+4. quando il pacchetto raggiunge il computer destinatario, quest'ultimo copia i dati e modifica il frame per segnalare che il messaggio è stato ricevuto e copiato.
 5. il pacchetto continua a circolare fino a raggiungere nuovamente il computer che lo aveva inviato. Il mittente controlla i bit di stato per verificare se il destinatario ha ricevuto e copiato correttamente il messaggio.
 6. il mittente rimuove i dati e lo rende nuovamente disponibile.
 
@@ -249,7 +249,7 @@ $S$ rappresenta dunque la funzione di tempo che è spesa dal sistema per trasmet
 
 Ricordando che il tempo è normalizzato, cioè il tempo di trasmissione del pacchetto è unitario, mentre il tempo di propagazione è indicato con $a$:
 
-Sia $a<1$, la stazione trasmette il pacchetto nell'istante $t_0$, inizia a ricevere all'istante $t_0+a$, e completa la trasmissione all'instante $t_0+1$. La stazione quindi ementte un nuovo token, che richiede un tempo pari ad $\frac{a}{N}$ per raggiungere la stazione successiva. Un ciclo richiede un tempo pari a:
+Sia $a>1$, la stazione trasmette il pacchetto nell'istante $t_0$, inizia a ricevere all'istante $t_0+a$, e completa la trasmissione all'instante $t_0+1$. La stazione quindi ementte un nuovo token, che richiede un tempo pari ad $\frac{a}{N}$ per raggiungere la stazione successiva. Un ciclo richiede un tempo pari a:
 
 $$C = 1 + \frac{a}{N} \quad \Longrightarrow \quad S = \frac{1}{1+\frac{a}{N}}$$
 
@@ -261,8 +261,8 @@ Considerando i risultati:
 
 $$S =
 \begin{cases}
-\dfrac{1}{1+\dfrac{a}{\sqrt{N}}} & a < 1 \\[10pt]
-\dfrac{1}{a\left(1+\dfrac{1}{\sqrt{N}}\right)} & a > 1
+\dfrac{1}{1+\dfrac{a}{N}} & a < 1 \\[10pt]
+\dfrac{1}{a\left(1+\dfrac{1}{N}\right)} & a > 1
 \end{cases}$$
 
 ---
@@ -316,7 +316,7 @@ Lo standard è diviso in due parti strettamente legate:
 
 In una conferenza audio/video entrami i media sono trasmessi come sessioni RTP separate e i pacchetti RTCP relativi usano due differenti coppie di porte UDP. Le sessioni RTP audio e video non sono perciò accoppiate tra loro per permettere ai partecipanti di ricevere soltanto uno dei due media a loro scelta. Nonostante questo è possibile sincronizzare il playback usando le informazioni di temporizzazione trasportate nei pacchetti RTCP.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[
     app/.style={
@@ -443,6 +443,68 @@ Per ogni partecipante di una conferenza, la sessione RTP è definita da una part
 In una conferenza multimediale ogni media (audio o video) ha una sua separata sessione con i propri pacchetti RTCP.
 
 Il pacchetto dati consiste in un header fisso RTP, una eventuale lista chiamata contributing source (CSRC) e il payload data (la sorgente dati).
+
+I primi **12 byte** costituiscono l'header fisso, presente in ogni pacchetto RTP, seguito eventualmente dalla lista degli identificatori CSRC (da 0 a 15 elementi da 32 bit ciascuno):
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.38, every node/.style={font=\scriptsize}]
+  % Griglia principale 32 bit x 4 righe (12 byte + CSRC)
+  \draw[thick] (0,0) rectangle (32,10);
+  
+  % Linee orizzontali
+  \draw[thick] (0,8) -- (32,8);
+  \draw[thick] (0,6) -- (32,6);
+  \draw[thick] (0,4) -- (32,4);
+  \draw[thick, dashed] (0,2) -- (32,2);
+
+  % Riga 1 (Bit 0-31)
+  \draw (2,8) -- (2,10);
+  \draw (3,8) -- (3,10);
+  \draw (4,8) -- (4,10);
+  \draw (8,8) -- (8,10);
+  \draw (9,8) -- (9,10);
+  \draw (16,8) -- (16,10);
+
+  \node at (1,9) {V};
+  \node at (2.5,9) {P};
+  \node at (3.5,9) {X};
+  \node at (6,9) {CC};
+  \node at (8.5,9) {M};
+  \node at (12.5,9) {PT};
+  \node at (24,9) {Sequence Number};
+
+  % Riga 2: Timestamp
+  \node at (16,7) {Timestamp};
+
+  % Riga 3: SSRC
+  \node at (16,5) {SSRC (Synchronization Source Identifier)};
+
+  % Riga 4: CSRC (opzionale)
+  \node at (16,3) {CSRC (Contributing Source Identifiers - opzionale, 0..15)};
+  
+  % Riga 5: Payload
+  \node at (16,1) {\textit{Payload Data (Audio / Video)}};
+
+  % Indicatori bit in alto
+  \node[above] at (0.3,10) {\tiny 0};
+  \node[above] at (8,10) {\tiny 8};
+  \node[above] at (16,10) {\tiny 16};
+  \node[above] at (31.7,10) {\tiny 31};
+\end{tikzpicture}
+\caption{Struttura del pacchetto e dell'header RTP}
+\end{figure}
+
+- **V (Version - 2 bit):** indica la versione del protocollo (attualmente la versione 2).
+- **P (Padding - 1 bit):** se impostato a 1, indica che il pacchetto contiene byte di riempimento aggiuntivi alla fine.
+- **X (Extension - 1 bit):** se impostato a 1, indica la presenza di un'estensione dell'header subito dopo i campi CSRC.
+- **CC (CSRC Count - 4 bit):** specifica il numero di identificatori CSRC (da 0 a 15) che seguono l'header fisso.
+- **M (Marker - 1 bit):** segnala eventi significativi nel flusso (ad esempio l'inizio di un nuovo fotogramma video o di una frase dopo una pausa audio).
+- **PT (Payload Type - 7 bit):** identifica il formato di codifica del contenuto trasportato (es. H.264).
+- **Sequence Number (16 bit):** numero progressivo incrementato di 1 per ogni pacchetto inviato; consente al ricevitore di riordinare i pacchetti e rilevare eventuali perdite.
+- **Timestamp (32 bit):** indica l'istante di campionamento del primo byte del pacchetto; permette di sincronizzare i flussi.
+- **SSRC (32 bit):** identifica in modo univoco la sorgente del flusso all'interno della sessione RTP.
+- **CSRC (32 bit ciascuno):** elenca le sorgenti originali che hanno contribuito al pacchetto nel caso in cui il flusso sia stato combinato da un *mixer* RTP.
 
 ## Protocollo di controllo (RTCP)
 
